@@ -1,0 +1,1 @@
+Read about the basics of Java and Implemented 6 assignments on arrays
