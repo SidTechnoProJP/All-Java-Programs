@@ -1,0 +1,233 @@
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New f
+$ git init
+Initialized empty Git repository in C:/Users/Siddhesolder/.git/
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New f
+$ git pull https://github.com/ramesha22/java-coding-.git
+fatal: couldn't find remote ref HEAD
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New f
+$ git clone https://github.com/ramesha22/java-codingI.git
+Cloning into 'java-coding-assignment-batch-II'...
+warning: You appear to have cloned an empty reposito
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New f
+$ cd java-coding-assignment-batch-II
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New fssignment-batch-II (main)
+$ git add .
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New fssignment-batch-II (main)
+$ git commit -m "Uploaded by Sid"
+[main (root-commit) 6d3059a] Uploaded by Sid
+ 194 files changed, 3071 insertions(+)
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/minMax.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/out/production/minMax/minMax.class
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24ty/minMax/src/minMax.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/Reverse Array.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/out/production/Reverse Array/rever
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tray/Reverse Array/src/reverseArray.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/A1.3 ArraySort.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/out/production/A1.3 ArraySort/sortArray.class
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24t/src/sortArray.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/A1.4 SwapElelments.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/out/production/A1.4 SwapElelments/swap.class
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tents/src/swap.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/A1.5 DuplicateValues.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/out/production/A1.5 DuplicateValues/duplicate
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tValues/src/duplicateValues.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/A1.6 SecondLargest.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/out/production/A1.6 SecondLargest/secondLargest
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tgest/src/secondLargest.java
+ create mode 100644 Siddhesh's JAVA folder/Day 1_24tthAug.txt
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25ts.txt
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/A2.1 Bank Account.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/out/production/A2.1 Bank Account/Account.class
+ create mode 100644 Siddhesh's JAVA folder/Day 2_25tunt/src/Account.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/A3.1 ReverseASting.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/out/production/A3.1 ReverseASting/reverseString
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tting/src/reverseString.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/A3.2 FindDuplicateWordsInString.im
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/out/production/A3.2 FindDuplicateWplicateString.class
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tcateWordsInString/src/findDuplicateString.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/A3.3 FindSubString.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/out/production/A3.3 FindSubString/findSubSting.
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tring/src/findSubSting.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/A3.4 DeleteCharactersAtSml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/out/production/A3.4 DelefiedPositions/deleteCharacters.class
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tractersAtSpecifiedPositions/src/deleteCharacters.jav
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/A3.5 MergeStringsAndPrintCapital
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/out/production/A3.5 MergeStringsintCapitals.class
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tngsAndPrintCapitals/src/printCapitals.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/A3.6 ReplaceSubString.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/out/production/A3.6 ReplaceSubString/replace
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tbString/src/replaceSubstring.java
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/A3.7 MemberEmpolyeeManager.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/out/production/A3.7 MemberEmpolyeeManag
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/out/production/A3.7 MemberEmpolyeeManag
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/out/production/A3.7 MemberEmpolyeeManag
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/out/production/A3.7 MemberEmpolyeeManag
+ create mode 100644 Siddhesh's JAVA folder/Day 3_26tolyeeManager/src/Member.java
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/A4.1 RectangleAreaAndMinMaxArea.im
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/out/production/A4.1 RectangleAreaAgle.class
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tAreaAndMinMaxArea/src/Rectangle.java
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/A4.2 HardwareStoreInvoice.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/out/production/A4.2 HardwareStoreInvoicet.class
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/out/production/A4.2 HardwareStoreInvoice
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29ttoreInvoice/src/Invoice.java
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/A4.3 AbstractRectSqrTriArea.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/out/production/A4.3 AbstractRectSqrTri
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/out/production/A4.3 AbstractRectSqrTri
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/out/production/A4.3 AbstractRectSqrTris
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/out/production/A4.3 AbstractRectSqrTri
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/out/production/A4.3 AbstractRectSqrTri
+ create mode 100644 Siddhesh's JAVA folder/Day 4_29tectSqrTriArea/src/Figure.java
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/A5.1 StudentData.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/out/production/A5.1 StudentData/Main.class
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/out/production/A5.1 StudentData/Result.class
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/out/production/A5.1 StudentData/Sports.class
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/out/production/A5.1 StudentData/Student.class
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/out/production/A5.1 StudentData/Test.class
+ create mode 100644 Siddhesh's JAVA folder/Day 5_30tta/src/Student.java
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/CustomExceptionClass.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/out/production/CustomExceptionClass/Custo
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/out/production/CustomExceptionClass/Excep
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stptionClass/src/Exception.java
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/A6.2 CollectionClassA Data.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/out/production/A6.2 CList - Employee Data/Employee.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/out/production/A6.2 CList - Employee Data/EmployeeData.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1stClassArrayList - Employee Data/src/Employee.java
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/A6.2 ExceptionHandling-IntExtMar
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/out/production/A6.2 ExceptionHanxamination.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/out/production/A6.2 ExceptionHanxternalException.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/out/production/A6.2 ExceptionHannternalException.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/out/production/A6.2 ExceptionHantudent.class
+ create mode 100644 Siddhesh's JAVA folder/Day 6_1standling-IntExtMarks/src/Student.java
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/A7.1 Linked List - EmployeeData.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/out/production/A7.1 Linked List - Ee.class
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/out/production/A7.1 Linked List - EeData.class
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndt - EmployeeData/src/Employee.java
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/A7.2 Package - ArrayOperations.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/out/production/A7.2 Package - ArrayOass
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/out/production/A7.2 Package - ArrayOps.class
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/src/Driver.java
+ create mode 100644 Siddhesh's JAVA folder/Day 7_2ndArrayOperations/src/p1/ArrayOps.java
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/A8.0 LamdaFunctionDemo.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/out/production/A8.0 LamdaFunctionDemo/Lambda
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thionDemo/src/LambdaDemo.java
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thtSqrTriArea/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thtSqrTriArea/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thtSqrTriArea/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thtSqrTriArea/A8.1 Lambda-RectSqrTriArea.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5thtSqrTriArea/src/LambdaRectSqrTri.java
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/A8.1 StreamAPI - EmployeeData.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/out/production/A8.1 StreamAPI - Emploass
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/out/production/A8.1 StreamAPI - Emploa.class
+ create mode 100644 Siddhesh's JAVA folder/Day 8_5th- EmployeeData/src/Employee.java
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/A9.0 JavaDateTime.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/out/production/A9.0 JavaDateTime/Demo1_DateTime.c
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/out/production/A9.0 JavaDateTime/Demo2_DateClass.
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/out/production/A9.0 JavaDateTime/Demo3_CalendarCl
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/src/Demo1_DateTime.java
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/src/Demo2_DateClass.java
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thme/src/Demo3_CalendarClass.java
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/.idea/.gitignore
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/.idea/misc.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/.idea/modules.xml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/A9.1 DateAPI - DateOperations.iml
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/out/production/A9.1 DateAPI - DateOpeons.class
+ create mode 100644 Siddhesh's JAVA folder/Day 9_6thDateOperations/src/DateOperations.java
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New fssignment-batch-II (main)
+$ git push https://github.com/ramesha22/java-coding-.git
+Enumerating objects: 293, done.
+Counting objects: 100% (293/293), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (207/207), done.
+Writing objects: 100% (293/293), 67.95 KiB | 1.01 Mi
+Total 293 (delta 63), reused 0 (delta 0), pack-reuse
+remote: Resolving deltas: 100% (63/63), done.
+To https://github.com/ramesha22/java-coding-assignme
+ * [new branch]      main -> main
+
+Siddhesh U S@DESKTOP-7PL84PK MINGW64 ~/Desktop/New fssignment-batch-II (main)
+$
