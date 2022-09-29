@@ -1,0 +1,187 @@
+(1) Update Age of all students as 20 in Student_new table. 
+mysql> UPDATE student_new
+    -> SET Age = 20;
+------------------------------------------------------------------------------------------  
+(2) Update Age as 21 and name as 'ABC' of student whose USN is  4XY22CS025 in Student table 
+mysql> UPDATE student
+    -> SET Age = 21, Name = 'ABC'
+    -> WHERE USN = 104;
+------------------------------------------------------------------------------------------  
+(3) Delete all the records of Student3 table. 
+mysql> DELETE FROM Student3;
+------------------------------------------------------------------------------------------
+(4) Delete records of employees whose age is 23 from Student_new table. 
+mysql> DELETE FROM Student_new
+    -> WHERE Age = 23;
+------------------------------------------------------------------------------------------ 
+(5) Add three columns Marks1, Marks2 and Marks3 to the Student table. 
+mysql> ALTER TABLE student
+    -> ADD COLUMN Marks1 int,
+    -> ADD COLUMN Marks2 int,
+    -> ADD COLUMN Marks3 int;
+------------------------------------------------------------------------------------------  
+(6) Drop column Marks3 from Student table 
+mysql> ALTER TABLE Student
+    -> DROP COLUMN Marks3;
+------------------------------------------------------------------------------------------    
+(7) Drop the table Student4 
+mysql> DROP TABLE Student4;
+------------------------------------------------------------------------------------------
+
+OUTPUT:
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use student_data;
+Database changed
+mysql> show tables;
++------------------------+
+| Tables_in_student_data |
++------------------------+
+| student                |
+| student1               |
+| student2               |
+| student3               |
+| student4               |
+| student_new            |
++------------------------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE student_new
+    -> SET Age = 20;
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from student_new;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 102 | NULL |  20 |
+| 103 | NULL |  20 |
++-----+------+-----+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE student
+    -> SET Age = 21, Name = 'ABC'
+    -> WHERE USN = 104;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 101 | Sid  |  20 |
+| 102 | Jay  |  21 |
+| 103 | Max  |  21 |
+| 104 | ABC  |  21 |
+| 105 | Kim  |  23 |
+| 106 | Jim  |  18 |
+| 107 | Pam  |  23 |
+| 108 | Mat  |  21 |
++-----+------+-----+
+8 rows in set (0.00 sec)
+
+mysql> DELETE FROM student3;
+Query OK, 5 rows affected (0.13 sec)
+
+mysql> DELETE FROM Student_new
+    -> WHERE Age = 23;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student_new;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 102 | NULL |  20 |
+| 103 | NULL |  20 |
++-----+------+-----+
+2 rows in set (0.00 sec)
+
+mysql> ALTER TABLE student
+    -> ADD COLUMN Marks1 int,
+    -> ADD COLUMN Marks2 int,
+    -> ADD COLUMN Marks3 int;
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student
+    -> ;
++-----+------+-----+--------+--------+--------+
+| USN | Name | Age | Marks1 | Marks2 | Marks3 |
++-----+------+-----+--------+--------+--------+
+| 101 | Sid  |  20 |   NULL |   NULL |   NULL |
+| 102 | Jay  |  21 |   NULL |   NULL |   NULL |
+| 103 | Max  |  21 |   NULL |   NULL |   NULL |
+| 104 | ABC  |  21 |   NULL |   NULL |   NULL |
+| 105 | Kim  |  23 |   NULL |   NULL |   NULL |
+| 106 | Jim  |  18 |   NULL |   NULL |   NULL |
+| 107 | Pam  |  23 |   NULL |   NULL |   NULL |
+| 108 | Mat  |  21 |   NULL |   NULL |   NULL |
++-----+------+-----+--------+--------+--------+
+8 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Student
+    -> DROP COLUMN Marks3;
+Query OK, 0 rows affected (8.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student
+    -> ;
++-----+------+-----+--------+--------+
+| USN | Name | Age | Marks1 | Marks2 |
++-----+------+-----+--------+--------+
+| 101 | Sid  |  20 |   NULL |   NULL |
+| 102 | Jay  |  21 |   NULL |   NULL |
+| 103 | Max  |  21 |   NULL |   NULL |
+| 104 | ABC  |  21 |   NULL |   NULL |
+| 105 | Kim  |  23 |   NULL |   NULL |
+| 106 | Jim  |  18 |   NULL |   NULL |
+| 107 | Pam  |  23 |   NULL |   NULL |
+| 108 | Mat  |  21 |   NULL |   NULL |
++-----+------+-----+--------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from student4;
++--------+---------+
+| st_USN | st_Name |
++--------+---------+
+|    101 | Sid     |
+|    102 | Jay     |
+|    103 | Max     |
+|    104 | Ram     |
+|    105 | Kim     |
++--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> DROP TABLE Student4;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from student4;
+ERROR 1146 (42S02): Table 'student_data.student4' doesn't exist
+mysql>

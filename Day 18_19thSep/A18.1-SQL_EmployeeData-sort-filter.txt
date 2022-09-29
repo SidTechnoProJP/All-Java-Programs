@@ -1,0 +1,726 @@
+Employee(Employee_ID, First_Name, Last_Name,  Hire_Date, Job_ID, Salary, Manager_ID, Department_ID) 
+
+Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Depertmrnt_ID) 
+
+Department(Dpt_Code, Dpt_Name, Dpt_Allotment) 
+
+ Write the sql query for the above
+
+Display the full name (first and last), hire date, salary, and department number for those 
+employees whose first name does not contain the letter M. The result set must be in ascending
+order by department number. 
+mysql> SELECT Employee_ID, First_Name, Last_Name, Hire_Date, Salary, Department_ID
+    -> FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Employee_ID;
++-------------+------------+-----------+------------+--------+---------------+
+| Employee_ID | First_Name | Last_Name | Hire_Date  | Salary | Department_ID |
++-------------+------------+-----------+------------+--------+---------------+
+|         100 | Steven     | King      | 2013-06-17 |  24000 |           101 |
+|         103 | Alexander  | Hunold    | 2017-05-21 |   9000 |           101 |
+|         104 | Bruce      | Ernst     | 2015-06-25 |   6000 |           103 |
+|         105 | David      | Austin    | 2016-02-05 |   4800 |           104 |
+|         106 | Diana      | Lorentz   | 2017-02-07 |  12008 |           102 |
+|         108 | Daniel     | Faviet    | 2012-08-16 |   8200 |           103 |
+|         109 | John       | Chen      | 2015-09-28 |   4000 |           101 |
++-------------+------------+-----------+------------+--------+---------------+
+
+Display the ID for those employees who did two or more jobs in the past. 
+mysql> SELECT employee_id
+    -> FROM job_history
+    -> GROUP BY employee_id
+    -> HAVING COUNT(*) >=2;
++-------------+
+| employee_id |
++-------------+
+|         101 |
++-------------+
+
+
+(1)Department(Dpt_Code, Dpt_Name, Dpt_Allotment)
+
+CREATE TABLE Department(  
+Dpt_Code int,   
+Dpt_Name varchar(40),
+Dpt_Allotment int,  
+PRIMARY KEY (Dpt_Code)
+);
+
+INSERT INTO Department(Dpt_Code, Dpt_Name, Dpt_Allotment)
+VALUES (101, 'IT & Engineering', 250), jid 1
+(102, 'Accounting & Finance', 300), jid 2
+(103, 'Sales & Marketing', 100), jid 3
+(104, 'Human Resources', 50), jid 4
+(105, 'Sourcing & Procurement', 225); jid 5
+
+(3)Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)  
+CREATE TABLE Job_History (  
+Employee_ID int NOT NULL,   
+Start_Date DATE, 
+End_Date DATE,
+Job_ID int,
+Dept_ID int,
+FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+);
+
+INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)
+VALUES (101, '2011-01-13', '2016-07-24', 1, 104),
+(103, '2011-10-28', '2015-03-15', 4, 102),
+(105, '2014-02-17', '2017-12-19', 6, 101);
+ALTER Table Job_History
+DROP Foreign KEY job_history_ibfk_2;
+
+
+(2) Employee(Employee_ID, First_Name, Last_Name, Hire_Date, Job_ID, Salary, Manager_ID, Department_ID) 
+CREATE TABLE Employee(  
+Employee_ID int,   
+First_Name varchar(40),
+Last_Name varchar(40),
+Hire_Date DATE,
+Job_ID int,
+Salary int,
+Manager_ID int,
+Department_ID int,  
+PRIMARY KEY (Employee_ID, Job_ID),
+FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code)
+);
+
+ALTER TABLE Employee
+ADD UNIQUE (Job_ID);
+
+ALTER TABLE Employee
+ADD PRIMARY KEY (Job_ID);
+
+INSERT INTO Employee(Employee_ID, First_Name, Last_Name, Hire_Date, Job_ID, Salary, Manager_ID, Department_ID)
+VALUES (100, 'Steven', 'King', '2013-06-17', 1, 24000, 0, 101),
+(101, 'Meena', 'Kochhar', '2015-09-21', 2, 17000, 10, 104),
+(102, 'Mex', 'De Haan', '2011-01-13', 3, 17000, 20, 102),
+(103, 'Alexander', 'Hunold', '2017-05-21', 4, 9000, 30, 101),
+(104, 'Bruce', 'Ernst', '2015-06-25', 5, 6000, 40, 103),
+(105, 'David', 'Austin', '2016-02-05', 6, 4800, 50, 104),
+(106, 'Diana', 'Lorentz', '2017-02-07', 7, 12008, 60, 102),
+(107, 'Mindy', 'Green', '2012-08-17', 8, 9000, 70, 105),
+(108, 'Daniel', 'Faviet', '2012-08-16', 9, 8200, 80, 103),
+(109, 'John ', 'Chen', '2015-09-28', 10, 4000, 90, 101);
+
+
+SELECT First_Name, Last_Name, Hire_Date, Salary, Department_ID
+FROM Employee
+WHERE First_Name NOT LIKE '%M%'
+ORDER BY Department_ID;
+
+
+SELECT Employee_ID, First_Name, Last_Name, Hire_Date, Salary, Department_ID
+FROM Employee
+WHERE First_Name NOT LIKE '%M%'
+ORDER BY Employee_ID;
+
+
+
+
+************************OUTPUT************************
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| customerorder_data |
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> create database employee_data;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| customerorder_data |
+| demo               |
+| employee_data      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use employee_data;
+Database changed
+mysql> CREATE TABLE Department(
+    -> Dpt_Code int,
+    -> Dpt_Name varchar(40),
+    -> Dpt_Allotment int
+    -> PRIMARY KEY (Dpt_Code)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(Dpt_Code)
+)' at line 5
+mysql> CREATE TABLE Department(
+    -> Dpt_Code int,
+    -> Dpt_Name varchar(40),
+    -> Dpt_Allotment int,
+    -> PRIMARY KEY (Dpt_Code)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> CREATE TABLE Department(
+    -> Employee_ID int,
+    -> First_Name varchar(40),
+    -> Last_Name varchar(40),
+    -> Hire_Date DATE,
+    -> Job_ID int,
+    -> Salary int,
+    -> Manager_ID int,
+    -> Department_ID int
+    -> PRIMARY KEY (Employee_ID)
+    -> FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(Employee_ID)
+FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code),
+)' at line 10
+mysql> CREATE TABLE Department(
+    -> Employee_ID int,
+    -> First_Name varchar(40),
+    -> Last_Name varchar(40),
+    -> Hire_Date DATE,
+    -> Job_ID int,
+    -> Salary int,
+    -> Manager_ID int,
+    -> Department_ID int,
+    -> PRIMARY KEY (Employee_ID),
+    -> FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 12
+mysql> CREATE TABLE Department(
+    -> Employee_ID int,
+    -> First_Name varchar(40),
+    -> Last_Name varchar(40),
+    -> Hire_Date DATE,
+    -> Job_ID int,
+    -> Salary int,
+    -> Manager_ID int,
+    -> Department_ID int,
+    -> PRIMARY KEY (Employee_ID),
+    -> FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code)
+    -> );
+ERROR 1050 (42S01): Table 'department' already exists
+mysql> CREATE TABLE Employee(
+    -> Employee_ID int,
+    -> First_Name varchar(40),
+    -> Last_Name varchar(40),
+    -> Hire_Date DATE,
+    -> Job_ID int,
+    -> Salary int,
+    -> Manager_ID int,
+    -> Department_ID int,
+    -> PRIMARY KEY (Employee_ID),
+    -> FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code)
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> PRIMARY KEY (Employee_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Employee(Department_ID),
+    -> FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID),
+    -> FOREIGN KEY (Job_ID) REFERENCES Employee(Job_ID)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_3' in the referenced table 'employee'
+mysql> show tables;
++-------------------------+
+| Tables_in_employee_data |
++-------------------------+
+| department              |
+| employee                |
++-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Dept_ID) REFERENCES Employee(Department_ID),
+    -> FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID),
+    -> FOREIGN KEY (Job_ID) REFERENCES Employee(Job_ID)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_3' in the referenced table 'employee'
+mysql> show tables;
++-------------------------+
+| Tables_in_employee_data |
++-------------------------+
+| department              |
+| employee                |
++-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> JHEmployee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> JHJob_ID int,
+    -> JHDept_ID int,
+    -> FOREIGN KEY (JHDept_ID) REFERENCES Employee(Department_ID),
+    -> FOREIGN KEY (JHEmployee_ID) REFERENCES Employee(Employee_ID),
+    -> FOREIGN KEY (JHJob_ID) REFERENCES Employee(Job_ID)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_3' in the referenced table 'employee'
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 9
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_1' in the referenced table 'employee'
+mysql> create table job_history(employee_id int, start_date date, end_date date, job_id int, department_id int, foreign key(employee_id,job_id) references employee(employee_id,job_id),foreign key(department_id) references department(dpt_code));
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_1' in the referenced table 'employee'
+mysql> show tables;
++-------------------------+
+| Tables_in_employee_data |
++-------------------------+
+| department              |
+| employee                |
++-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Employee_ID   | int         | NO   | PRI | NULL    |       |
+| First_Name    | varchar(40) | YES  |     | NULL    |       |
+| Last_Name     | varchar(40) | YES  |     | NULL    |       |
+| Hire_Date     | date        | YES  |     | NULL    |       |
+| Job_ID        | int         | YES  |     | NULL    |       |
+| Salary        | int         | YES  |     | NULL    |       |
+| Manager_ID    | int         | YES  |     | NULL    |       |
+| Department_ID | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc department;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Dpt_Code      | int         | NO   | PRI | NULL    |       |
+| Dpt_Name      | varchar(40) | YES  |     | NULL    |       |
+| Dpt_Allotment | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_1' in the referenced table 'employee'
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int NOT NULL,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_1' in the referenced table 'employee'
+mysql> ALTER TABLE Employee
+    -> ADD UNIQUE (Job_ID);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++-------------------------+
+| Tables_in_employee_data |
++-------------------------+
+| department              |
+| employee                |
++-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int NOT NULL,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'job_history_ibfk_1' in the referenced table 'employee'
+mysql> ALTER TABLE Employee
+    -> ADD PRIMARY KEY (Job_ID);
+ERROR 1068 (42000): Multiple primary key defined
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Employee_ID   | int         | NO   | PRI | NULL    |       |
+| First_Name    | varchar(40) | YES  |     | NULL    |       |
+| Last_Name     | varchar(40) | YES  |     | NULL    |       |
+| Hire_Date     | date        | YES  |     | NULL    |       |
+| Job_ID        | int         | YES  | UNI | NULL    |       |
+| Salary        | int         | YES  |     | NULL    |       |
+| Manager_ID    | int         | YES  |     | NULL    |       |
+| Department_ID | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> drop employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee' at line 1
+mysql> drop table employee;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE Employee(
+    -> Employee_ID int,
+    -> First_Name varchar(40),
+    -> Last_Name varchar(40),
+    -> Hire_Date DATE,
+    -> Job_ID int,
+    -> Salary int,
+    -> Manager_ID int,
+    -> Department_ID int,
+    -> PRIMARY KEY (Employee_ID, Job_ID),
+    -> FOREIGN KEY (Department_ID) REFERENCES Department(Dpt_Code)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> CREATE TABLE Job_History (
+    -> Employee_ID int NOT NULL,
+    -> Start_Date DATE,
+    -> End_Date DATE,
+    -> Job_ID int,
+    -> Dept_ID int,
+    -> FOREIGN KEY (Employee_ID, Job_ID) REFERENCES Employee(Employee_ID, Job_ID),
+    -> FOREIGN KEY (Dept_ID) REFERENCES Department(Dpt_Code)
+    -> );
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> INSERT INTO Department(Dpt_Code, Dpt_Name, Dpt_Allotment)
+    -> VALUES (101, IT & Engineering, 250),
+    -> (102, Accounting & Finance, 300),
+    -> (103, Sales & Marketing, 100),
+    -> (104, Human Resources, 50),
+    -> (105, Sourcing & Procurement, 225);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Resources, 50),
+(105, Sourcing & Procurement, 225)' at line 5
+mysql> INSERT INTO Department(Dpt_Code, Dpt_Name, Dpt_Allotment)
+    -> VALUES (101, 'IT & Engineering', 250),
+    -> (102, 'Accounting & Finance', 300),
+    -> (103, 'Sales & Marketing', 100),
+    -> (104, 'Human Resources', 50),
+    -> (105, 'Sourcing & Procurement', 225);
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO Employee(Employee_ID, First_Name, Last_Name, Hire_Date, Job_ID, Salary, Manager_ID, Department_ID)
+    -> VALUES (100, 'Steven', 'King', '2013-06-17', 1, 24000, 0, 101),
+    -> (101, 'Meena', 'Kochhar', '2015-09-21', 4, 17000, 10, 104),
+    -> (102, 'Mex', 'De Haan', '2011-01-13', 2, 17000, 20, 102),
+    -> (103, 'Alexander', 'Hunold', '2017-05-21', 1, 9000, 30, 101),
+    -> (104, 'Bruce', 'Ernst', '2015-06-25', 3, 6000, 40, 103),
+    -> (101, 'David', 'Austin', '2016-02-05', 4, 4800, 50, 104),
+    -> (106, 'Diana', 'Lorentz', '2017-02-07', 2, 12008, 60, 102),
+    -> (107, 'Mindy', 'Green', '2012-08-17', 5, 9000, 70, 105),
+    -> (108, 'Daniel', 'Faviet', '2012-08-16', 3, 8200, 80, 103),
+    -> (103, 'John ', 'Chen', '2015-09-28', 1, 4000, 90, 101);
+ERROR 1062 (23000): Duplicate entry '101-4' for key 'employee.PRIMARY'
+mysql> INSERT INTO Employee(Employee_ID, First_Name, Last_Name, Hire_Date, Job_ID, Salary, Manager_ID, Department_ID)
+    -> VALUES (100, 'Steven', 'King', '2013-06-17', 1, 24000, 0, 101),
+    -> (101, 'Meena', 'Kochhar', '2015-09-21', 2, 17000, 10, 104),
+    -> (102, 'Mex', 'De Haan', '2011-01-13', 3, 17000, 20, 102),
+    -> (103, 'Alexander', 'Hunold', '2017-05-21', 4, 9000, 30, 101),
+    -> (104, 'Bruce', 'Ernst', '2015-06-25', 5, 6000, 40, 103),
+    -> (105, 'David', 'Austin', '2016-02-05', 6, 4800, 50, 104),
+    -> (106, 'Diana', 'Lorentz', '2017-02-07', 7, 12008, 60, 102),
+    -> (107, 'Mindy', 'Green', '2012-08-17', 8, 9000, 70, 105),
+    -> (108, 'Daniel', 'Faviet', '2012-08-16', 9, 8200, 80, 103),
+    -> (109, 'John ', 'Chen', '2015-09-28', 10, 4000, 90, 101);
+Query OK, 10 rows affected (0.03 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Depertmrnt_ID)
+    -> VALUES (101, '2011-01-13', '2016-07-24', 1, 104),
+    -> (103, '2011-10-28', '2015-03-15', 2, 102),
+    -> (105, '2014-02-17', '2017-12-19', 3, 101);
+ERROR 1054 (42S22): Unknown column 'Depertmrnt_ID' in 'field list'
+mysql> INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)
+    -> VALUES (101, '2011-01-13', '2016-07-24', 1, 104),
+    -> (103, '2011-10-28', '2015-03-15', 2, 102),
+    -> (105, '2014-02-17', '2017-12-19', 3, 101);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`employee_data`.`job_history`, CONSTRAINT `job_history_ibfk_1` FOREIGN KEY (`Employee_ID`, `Job_ID`) REFERENCES `employee` (`Employee_ID`, `Job_ID`))
+mysql> INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)
+    -> VALUES (101, '2011-01-13', '2016-07-24', 1, 104),
+    -> (103, '2011-10-28', '2015-03-15', 4, 102),
+    -> (105, '2014-02-17', '2017-12-19', 6, 101);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`employee_data`.`job_history`, CONSTRAINT `job_history_ibfk_1` FOREIGN KEY (`Employee_ID`, `Job_ID`) REFERENCES `employee` (`Employee_ID`, `Job_ID`))
+mysql> ALTER Table Job_History
+    -> DROP Foreign KEY job_history_ibfk_1;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER Table Job_History
+    -> DROP Foreign KEY job_history_ibfk_2;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  ALTER Table Employee
+    -> DROP PRIMARY KEY;
+Query OK, 10 rows affected (0.16 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee
+    -> ADD Primary key (Employee_ID);
+Query OK, 0 rows affected (0.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Job_History
+    -> ADD FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from job_history;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)
+    -> VALUES (101, '2011-01-13', '2016-07-24', 1, 104),
+    -> (103, '2011-10-28', '2015-03-15', 4, 102),
+    -> (105, '2014-02-17', '2017-12-19', 6, 101);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO Employee(Employee_ID, First_Name, Last_Name, Hire_Date, Job_ID, Salary, Manager_ID, Department_ID)
+    -> VALUES (100, 'Steven', 'King', '2013-06-17', 1, 24000, 0, 101),
+    -> (101, 'Meena', 'Kochhar', '2015-09-21', 2, 17000, 10, 104),
+    -> (102, 'Mex', 'De Haan', '2011-01-13', 3, 17000, 20, 102),
+    -> (103, 'Alexander', 'Hunold', '2017-05-21', 4, 9000, 30, 101),
+    -> (104, 'Bruce', 'Ernst', '2015-06-25', 5, 6000, 40, 103),
+    -> (105, 'David', 'Austin', '2016-02-05', 6, 4800, 50, 104),
+    -> (106, 'Diana', 'Lorentz', '2017-02-07', 7, 12008, 60, 102),
+    -> (107, 'Mindy', 'Green', '2012-08-17', 8, 9000, 70, 105),
+    -> (108, 'Daniel', 'Faviet', '2012-08-16', 9, 8200, 80, 103),
+    -> (109, 'John ', 'Chen', '2015-09-28', 10, 4000, 90,;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 11
+mysql> INSERT INTO Job_History(Employee_ID, Start_Date, End_Date, Job_ID, Dept_ID)
+    -> VALUES(101, '2016-07-25', '2019-09-09', 6, 102);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT employee_id
+    -> FROM job_history
+    -> GROUP BY employee_id
+    -> HAVING COUNT(*) >=2;
++-------------+
+| employee_id |
++-------------+
+|         101 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT first_name || ' ' || last_name as Full_Name, hire_date,
+    ->  salary,  department_id
+    ->   FROM employees
+    ->    WHERE first_name NOT LIKE '%M%'
+    ->      ORDER BY department_id;
+ERROR 1146 (42S02): Table 'employee_data.employees' doesn't exist
+mysql> SELECT First_Name || ' ' || Last_Name as Full_Name, Hire_Date, Salary, Department_ID
+    -> FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Department_ID;
++-----------+------------+--------+---------------+
+| Full_Name | Hire_Date  | Salary | Department_ID |
++-----------+------------+--------+---------------+
+|         0 | 2013-06-17 |  24000 |           101 |
+|         0 | 2017-05-21 |   9000 |           101 |
+|         0 | 2015-09-28 |   4000 |           101 |
+|         0 | 2017-02-07 |  12008 |           102 |
+|         0 | 2015-06-25 |   6000 |           103 |
+|         0 | 2012-08-16 |   8200 |           103 |
+|         0 | 2016-02-05 |   4800 |           104 |
++-----------+------------+--------+---------------+
+7 rows in set, 16 warnings (0.03 sec)
+
+mysql>
+mysql> SELECT First_Name, Last_Name, Hire_Date, Salary, Department_ID
+    -> FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Department_ID;
++------------+-----------+------------+--------+---------------+
+| First_Name | Last_Name | Hire_Date  | Salary | Department_ID |
++------------+-----------+------------+--------+---------------+
+| Steven     | King      | 2013-06-17 |  24000 |           101 |
+| Alexander  | Hunold    | 2017-05-21 |   9000 |           101 |
+| John       | Chen      | 2015-09-28 |   4000 |           101 |
+| Diana      | Lorentz   | 2017-02-07 |  12008 |           102 |
+| Bruce      | Ernst     | 2015-06-25 |   6000 |           103 |
+| Daniel     | Faviet    | 2012-08-16 |   8200 |           103 |
+| David      | Austin    | 2016-02-05 |   4800 |           104 |
++------------+-----------+------------+--------+---------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from Employee
+    -> ;
++-------------+------------+-----------+------------+--------+--------+------------+---------------+
+| Employee_ID | First_Name | Last_Name | Hire_Date  | Job_ID | Salary | Manager_ID | Department_ID |
++-------------+------------+-----------+------------+--------+--------+------------+---------------+
+|         100 | Steven     | King      | 2013-06-17 |      1 |  24000 |          0 |           101 |
+|         101 | Meena      | Kochhar   | 2015-09-21 |      2 |  17000 |         10 |           104 |
+|         102 | Mex        | De Haan   | 2011-01-13 |      3 |  17000 |         20 |           102 |
+|         103 | Alexander  | Hunold    | 2017-05-21 |      4 |   9000 |         30 |           101 |
+|         104 | Bruce      | Ernst     | 2015-06-25 |      5 |   6000 |         40 |           103 |
+|         105 | David      | Austin    | 2016-02-05 |      6 |   4800 |         50 |           104 |
+|         106 | Diana      | Lorentz   | 2017-02-07 |      7 |  12008 |         60 |           102 |
+|         107 | Mindy      | Green     | 2012-08-17 |      8 |   9000 |         70 |           105 |
+|         108 | Daniel     | Faviet    | 2012-08-16 |      9 |   8200 |         80 |           103 |
+|         109 | John       | Chen      | 2015-09-28 |     10 |   4000 |         90 |           101 |
++-------------+------------+-----------+------------+--------+--------+------------+---------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT First_Name, Last_Name, Hire_Date, Salary, Department_ID
+    ->     -> FROM Employee
+    ->     -> WHERE First_Name NOT LIKE '%M%'
+    ->     -> ORDER BY Employee_ID;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Employee_ID' at line 2
+mysql> SELECT First_Name, Last_Name, Hire_Date, Salary, Department_ID
+    -> FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Employee_ID;
++------------+-----------+------------+--------+---------------+
+| First_Name | Last_Name | Hire_Date  | Salary | Department_ID |
++------------+-----------+------------+--------+---------------+
+| Steven     | King      | 2013-06-17 |  24000 |           101 |
+| Alexander  | Hunold    | 2017-05-21 |   9000 |           101 |
+| Bruce      | Ernst     | 2015-06-25 |   6000 |           103 |
+| David      | Austin    | 2016-02-05 |   4800 |           104 |
+| Diana      | Lorentz   | 2017-02-07 |  12008 |           102 |
+| Daniel     | Faviet    | 2012-08-16 |   8200 |           103 |
+| John       | Chen      | 2015-09-28 |   4000 |           101 |
++------------+-----------+------------+--------+---------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT Employee_ID, First_Name, Last_Name, Hire_Date, Salary, Department_ID
+    -> FROM Employee
+    -> WHERE First_Name NOT LIKE '%M%'
+    -> ORDER BY Employee_ID;
++-------------+------------+-----------+------------+--------+---------------+
+| Employee_ID | First_Name | Last_Name | Hire_Date  | Salary | Department_ID |
++-------------+------------+-----------+------------+--------+---------------+
+|         100 | Steven     | King      | 2013-06-17 |  24000 |           101 |
+|         103 | Alexander  | Hunold    | 2017-05-21 |   9000 |           101 |
+|         104 | Bruce      | Ernst     | 2015-06-25 |   6000 |           103 |
+|         105 | David      | Austin    | 2016-02-05 |   4800 |           104 |
+|         106 | Diana      | Lorentz   | 2017-02-07 |  12008 |           102 |
+|         108 | Daniel     | Faviet    | 2012-08-16 |   8200 |           103 |
+|         109 | John       | Chen      | 2015-09-28 |   4000 |           101 |
++-------------+------------+-----------+------------+--------+---------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Employee_ID   | int         | NO   | PRI | NULL    |       |
+| First_Name    | varchar(40) | YES  |     | NULL    |       |
+| Last_Name     | varchar(40) | YES  |     | NULL    |       |
+| Hire_Date     | date        | YES  |     | NULL    |       |
+| Job_ID        | int         | NO   |     | NULL    |       |
+| Salary        | int         | YES  |     | NULL    |       |
+| Manager_ID    | int         | YES  |     | NULL    |       |
+| Department_ID | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc department;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Dpt_Code      | int         | NO   | PRI | NULL    |       |
+| Dpt_Name      | varchar(40) | YES  |     | NULL    |       |
+| Dpt_Allotment | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc job_history;
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| Employee_ID | int  | NO   | MUL | NULL    |       |
+| Start_Date  | date | YES  |     | NULL    |       |
+| End_Date    | date | YES  |     | NULL    |       |
+| Job_ID      | int  | YES  |     | NULL    |       |
+| Dept_ID     | int  | YES  | MUL | NULL    |       |
++-------------+------+------+-----+---------+-------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

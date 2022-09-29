@@ -1,0 +1,302 @@
+Orders(Order_no, purchase_amt, order_date, customer_id, salesman_id) 
+
+Customer(Cust_id, cust_name, city,grade, salesman_id) 
+
+Salesman(salesman_id, name, city) 
+
+For the above table write sql query for the following:
+1. Display the highest grade for each of the cities of the customers. 
+2. Display names of those customers and salesmen who lives in the same city. 
+3. Display each order number followed by the name of the customers who made the order.
+
+
+1. Display the highest grade for each of the cities of the customers. 
+mysql> SELECT grade, city, cust_name FROM Customer ORDER BY grade desc;
++-------+------------+-----------+
+| grade | city       | cust_name |
++-------+------------+-----------+
+|   200 | Los Santos | Kate      |
+|   190 | New York   | Rob       |
+|   100 | Florida    | Robert    |
+|    80 | Denver     | Ron W     |
+|    70 | New York   | Bob       |
+|    60 | Pune       | Rohit     |
++-------+------------+-----------+
+
+2. Display names of those customers and salesmen who lives in the same city.
+--------INNER JOIN-------
+SELECT customer.cust_name AS Customer_Name, salesman.name AS Salesman_Name, customer.city AS City
+FROM Customer  
+INNER JOIN Salesman  
+ON salesman.city = customer.city  
+ORDER BY cust_id;
+
+//customer.city,
+//, salesman.city
+
+mysql> SELECT customer.cust_name AS Customer_Name, salesman.name AS Salesman_Name, customer.city AS City
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++---------------+---------------+----------+
+| Customer_Name | Salesman_Name | City     |
++---------------+---------------+----------+
+| Rob           | Peter         | New York |
+| Rohit         | Sid           | Pune     |
+| Bob           | Peter         | New York |
++---------------+---------------+----------+   
+
+3. Display each order number followed by the name of the customers who made the order.
+Orders(Order_no, purchase_amt, order_date, customer_id, salesman_id) 
+
+Customer(Cust_id, cust_name, city,grade, salesman_id) 
+
+SELECT orders.order_no AS Order_No, customer.cust_name AS Customer_Name 
+FROM Orders  
+INNER JOIN Customer
+ON customer.cust_id = customer_id
+ORDER BY customer_id;
+
++----------+---------------+
+| Order_No | Customer_Name |
++----------+---------------+
+|      101 | Robert        |
+|      102 | Rob           |
+|      103 | Ron W         |
+|      104 | Rohit         |
+|      105 | Bob           |
+|      108 | Bob           |
+|      106 | Kate          |
+|      107 | Kate          |
++----------+---------------+
+
+
+
+OUTPUT:
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| customerorder_data |
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.03 sec)
+
+mysql> use customerorder_data;
+Database changed
+mysql> show tables;
++------------------------------+
+| Tables_in_customerorder_data |
++------------------------------+
+| customer                     |
+| orders                       |
+| salesman                     |
++------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT grade, city FROM Customer
+    -> WHERE MAX(grade);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> SELECT grade, city, cust_name FROM Customer ORDER BY grade desc;
++-------+------------+-----------+
+| grade | city       | cust_name |
++-------+------------+-----------+
+|   200 | Los Santos | Kate      |
+|   190 | New York   | Rob       |
+|   100 | Florida    | Robert    |
+|    80 | Denver     | Ron W     |
+|    70 | New York   | Bob       |
+|    60 | Pune       | Rohit     |
++-------+------------+-----------+
+6 rows in set (0.03 sec)
+
+mysql> SELECT customer.city, salesman.city
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY city;
+ERROR 1052 (23000): Column 'city' in order clause is ambiguous
+mysql> SELECT customer.city, salesman.city
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++----------+----------+
+| city     | city     |
++----------+----------+
+| New York | New York |
+| Pune     | Pune     |
+| New York | New York |
++----------+----------+
+3 rows in set (0.03 sec)
+
+mysql> SELECT customer.name, customer.city, salesman.name, salesman.city
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
+ERROR 1054 (42S22): Unknown column 'customer.name' in 'field list'
+mysql> SELECT customer.cust_name, customer.city, salesman.name, salesman.city
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++-----------+----------+-------+----------+
+| cust_name | city     | name  | city     |
++-----------+----------+-------+----------+
+| Rob       | New York | Peter | New York |
+| Rohit     | Pune     | Sid   | Pune     |
+| Bob       | New York | Peter | New York |
++-----------+----------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT customer.cust_name, salesman.name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++-----------+-------+
+| cust_name | name  |
++-----------+-------+
+| Rob       | Peter |
+| Rohit     | Sid   |
+| Bob       | Peter |
++-----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT customer.cust_name, salesman.name AS Salesman_name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++-----------+---------------+
+| cust_name | Salesman_name |
++-----------+---------------+
+| Rob       | Peter         |
+| Rohit     | Sid           |
+| Bob       | Peter         |
++-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT customer.cust_name AS Customer Name, salesman.name AS Salesman Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Name, salesman.name AS Salesman Name
+FROM Customer
+INNER JOIN Salesman
+ON sa' at line 1
+mysql> SELECT customer.cust_name AS Customer Name AND salesman.name AS Salesman Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Name AND salesman.name AS Salesman Name
+FROM Customer
+INNER JOIN Salesman
+ON' at line 1
+mysql> SELECT customer.cust_name AS Customer Name
+    -> salesman.name AS Salesman Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Name
+salesman.name AS Salesman Name
+FROM Customer
+INNER JOIN Salesman
+ON sa' at line 1
+mysql> SELECT customer.cust_name, salesman.name AS Salesman Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Name
+FROM Customer
+INNER JOIN Salesman
+ON salesman.city = customer.city
+OR' at line 1
+mysql> SELECT customer.cust_name, salesman.name AS Salesman_Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++-----------+---------------+
+| cust_name | Salesman_Name |
++-----------+---------------+
+| Rob       | Peter         |
+| Rohit     | Sid           |
+| Bob       | Peter         |
++-----------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT customer.cust_name AS Customer_Name, salesman.name AS Salesman_Name
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++---------------+---------------+
+| Customer_Name | Salesman_Name |
++---------------+---------------+
+| Rob           | Peter         |
+| Rohit         | Sid           |
+| Bob           | Peter         |
++---------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT customer.cust_name AS Customer_Name, salesman.name AS Salesman_Name, customer.city AS City
+    -> FROM Customer
+    -> INNER JOIN Salesman
+    -> ON salesman.city = customer.city
+    -> ORDER BY cust_id;
++---------------+---------------+----------+
+| Customer_Name | Salesman_Name | City     |
++---------------+---------------+----------+
+| Rob           | Peter         | New York |
+| Rohit         | Sid           | Pune     |
+| Bob           | Peter         | New York |
++---------------+---------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT orders.order_no AS Order_No, customer.cust_name AS Customer_Name
+    -> FROM Orders
+    -> INNER JOIN Customer
+    -> ON customer.cust_id = customer_id
+    -> ORDER BY customer_id;
++----------+---------------+
+| Order_No | Customer_Name |
++----------+---------------+
+|      101 | Robert        |
+|      102 | Rob           |
+|      103 | Ron W         |
+|      104 | Rohit         |
+|      105 | Bob           |
+|      108 | Bob           |
+|      106 | Kate          |
+|      107 | Kate          |
++----------+---------------+
+8 rows in set (0.01 sec)
+
+mysql>

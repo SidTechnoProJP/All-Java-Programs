@@ -1,0 +1,640 @@
+Create following tables by applying appropriate constraints: 
+
+Orders(Order_no, purchase_amt, order_date, customer_id, salesman_id) 
+Customer(Cust_id, cust_name, city,grade, salesman_id) 
+Salesman(salesman_id, name, city) 
+
+SQL: 
+1. Display those customers who are neither belongs to the city New York 
+   nor grade value is more than 100. 
+2. Find the highest purchase amount ordered by each customer along with their ID. 
+3. Find the highest purchase amount along with customer ID and order date, 
+   for those customers who have a higher purchase amount in a day which is within 
+   the range 2000 and 6000. 
+
+
+YYYY-MM-DD
+Orders(Order_no, purchase_amt, order_date, customer_id, salesman_id) 
+CREATE TABLE Orders (  
+Order_no int,   
+purhase_amt int,
+order_date DATE, 
+customer_id int NOT NULL,
+salesman_id int NOT NULL,  
+PRIMARY KEY (Order_no),
+FOREIGN KEY (customer_id) REFERENCES Customer(Cust_id),
+FOREIGN KEY (salesman_id) REFERENCES Salesman(salesman_id)
+); 
+
+INSERT INTO Orders(Order_no, purhase_amt, order_date, customer_id, salesman_id)   
+VALUES (101, 1000, '2022-08-15', 201, 303),   
+(102, 6500, '2022-02-06', 202, 303),
+(103, 2500, '2021-03-04', 203, 305), 
+(104, 5500, '2020-11-26', 204, 301),
+(105, 7999, '2022-09-09', 205, 304),
+(106, 5900, '2022-09-14', 206, 302);
+
+
+Customer(Cust_id, cust_name, city,grade, salesman_id)
+CREATE TABLE Customer (  
+Cust_id int,   
+cust_name varchar(40),
+city varchar(40) DEFAULT 'Pune', 
+grade int, 
+salesman_id int NOT NULL,
+PRIMARY KEY (Cust_id),
+FOREIGN KEY (salesman_id) REFERENCES Salesman(salesman_id)
+);
+
+INSERT INTO Customer(Cust_id, cust_name, city, grade, salesman_id)   
+VALUES (201,'Robert', 'Florida', 100, 303),   
+(202,'Rob', 'New York', 190, 303),
+(203,'Ron W', 'Denver', 80, 305), 
+(204,'Rohit', 'Pune', 60, 301),
+(205,'Bob', 'New York', 70, 304),
+(206,'Kate', 'Los Santos', 200, 302);
+//pick up from here
+
+Salesman(salesman_id, name, city)
+CREATE TABLE Salesman (  
+salesman_id int,   
+name varchar(40),
+city varchar(40),  
+PRIMARY KEY (salesman_id)
+);
+
+INSERT INTO Salesman(salesman_id, name, city)
+VALUES (301,'Sid', 'Pune'),   
+(302, 'Joseph', 'California'),   
+(303, 'Peter', 'New York'),
+(304, 'John', 'Tokyo'),
+(305, 'Max', 'San Diego'); 
+
+1. Display those customers who are neither belongs to the city New York 
+   nor grade value is more than 100. 
+SELECT *  
+FROM Customer  
+WHERE city != 'New York'  
+AND grade < 100;    
++---------+-----------+--------+-------+-------------+
+| Cust_id | cust_name | city   | grade | salesman_id |
++---------+-----------+--------+-------+-------------+
+|     203 | Ron W     | Denver |    80 |         305 |
+|     204 | Rohit     | Pune   |    60 |         301 |
++---------+-----------+--------+-------+-------------+
+
+2. Find the highest purchase amount ordered by each customer along with their ID.
+ SELECT MAX(purhase_amt) AS Maximum_purchase_amt FROM Orders;
+mysql>  SELECT purhase_amt, customer_id AS Customer_ID FROM Orders ORDER BY purhase_amt desc LIMIT 1;
++-------------+-------------+
+| purhase_amt | Customer_ID |
++-------------+-------------+
+|        7999 |         205 |
++-------------+-------------+
+
+3. Find the highest purchase amount along with customer ID and order date, 
+   for those customers who have a higher purchase amount in a day which is within 
+   the range 2000 and 6000.
+UPDATE Orders    
+SET order_date = '2022-09-09'
+WHERE Order_no < 110;    
+
+SELECT purhase_amt, customer_id, order_date 
+FROM Orders 
+WHERE purhase_amt>=2000 && purhase_amt<=6000 
+AND order_date = ''
+ORDER BY purhase_amt desc LIMIT 1;
++-------------+-------------+------------+
+| purhase_amt | customer_id | order_date |
++-------------+-------------+------------+
+|        2500 |         203 | 2022-09-09 |
+|        5500 |         204 | 2022-09-09 |
+|        5900 |         206 | 2022-09-09 |
++-------------+-------------+------------+
+
+mysql> select * from orders;
++----------+-------------+------------+-------------+-------------+
+| Order_no | purhase_amt | order_date | customer_id | salesman_id |
++----------+-------------+------------+-------------+-------------+
+|      101 |        1000 | 2022-09-09 |         201 |         303 |
+|      102 |        6500 | 2022-09-09 |         202 |         303 |
+|      103 |        2500 | 2022-09-09 |         203 |         305 |
+|      104 |        5500 | 2022-09-09 |         204 |         301 |
+|      105 |        7999 | 2022-09-09 |         205 |         304 |
+|      106 |        5900 | 2022-09-09 |      // 206 |         302 |
+|      107 |        3333 | 2022-02-02 |         206 |         302 |
+|      108 |        4000 | 2022-02-02 |      // 205 |         304 |
++----------+-------------+------------+-------------+-------------+
+
+SELECT MAX(purhase_amt), group_concat(customer_id), order_date
+FROM Orders
+WHERE purhase_amt>=2000
+AND purhase_amt<=6000
+GROUP BY order_date
+ORDER BY purhase_amt desc;
+
+SELECT customer_id,order_date,MAX(purhase_amt) 
+FROM orders  
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000
+ORDER BY MAX(purhase_amt) desc;
+
+GROUP BY order_date, customer_id
+ 
+SELECT customer_id,order_date,MAX(purhase_amt)
+FROM orders
+ORDER BY MAX(purhase_amt) desc
+GROUP BY order_date, customer_id
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000;
+
+
+SELECT orders.customer_id,orders.order_date,orders.purhase_amt,customer.cust_id
+FROM orders
+INNER JOIN customer
+ON orders.customer_id = customer.cust_id
+GROUP BY order_date, customer_id
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000;
+
+SELECT customer_id,order_date,MAX(purhase_amt)
+FROM orders
+GROUP BY customer_id, order_date
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000;
+
+SELECT customer_id,order_date,MAX(purhase_amt)
+FROM orders
+GROUP BY order_date
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000;
++----------+-------------+------------+-------------+-------------+
+| Order_no | purhase_amt | order_date | customer_id | salesman_id |
++----------+-------------+------------+-------------+-------------+
+|      101 |        1000 | 2022-09-09 |         201 |         303 |
+|      102 |        6500 | 2022-09-09 |         202 |         303 |
+|      103 |        2500 | 2022-09-09 |         203 |         305 |
+|      104 |        5500 | 2022-09-09 |         204 |         301 |
+|      105 |        7999 | 2022-09-09 |         205 |         304 |
+|      106 |        5900 | 2022-09-09 |      // 206 |         302 |
+|      107 |        3333 | 2022-02-02 |         206 |         302 |
+|      108 |        4000 | 2022-02-02 |      // 205 |         304 |
++----------+-------------+------------+-------------+-------------+
+
+SELECT purhase_amt,customer_id,order_date 
+FROM orders 
+WHERE purhase_amt in (SELECT max(purhase_amt) 
+FROM orders 
+WHERE purhase_amt BETWEEN 2000 AND 6000 GROUP BY order_date) 
+GROUP BY order_date;
+
+
+SELECT DISTINCT order_date, customer_id, MAX(purhase_amt)
+FROM orders
+GROUP BY order_date, customer_id
+HAVING MAX(purhase_amt) BETWEEN 2000 AND 6000;
+
+
+******************************OUTPUT**********************************************************
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use student_data;
+Database changed
+mysql> show tables;
++------------------------+
+| Tables_in_student_data |
++------------------------+
+| student                |
+| student1               |
+| student2               |
+| student3               |
+| student4               |
+| student_new            |
++------------------------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE student_new
+    -> SET Age = 20;
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from student_new;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 102 | NULL |  20 |
+| 103 | NULL |  20 |
++-----+------+-----+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE student
+    -> SET Age = 21, Name = 'ABC'
+    -> WHERE USN = 104;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 101 | Sid  |  20 |
+| 102 | Jay  |  21 |
+| 103 | Max  |  21 |
+| 104 | ABC  |  21 |
+| 105 | Kim  |  23 |
+| 106 | Jim  |  18 |
+| 107 | Pam  |  23 |
+| 108 | Mat  |  21 |
++-----+------+-----+
+8 rows in set (0.00 sec)
+
+mysql> DELETE FROM student3;
+Query OK, 5 rows affected (0.13 sec)
+
+mysql> DELETE FROM Student_new
+    -> WHERE Age = 23;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student_new;
++-----+------+-----+
+| USN | Name | Age |
++-----+------+-----+
+| 102 | NULL |  20 |
+| 103 | NULL |  20 |
++-----+------+-----+
+2 rows in set (0.00 sec)
+
+mysql> ALTER TABLE student
+    -> ADD COLUMN Marks1 int,
+    -> ADD COLUMN Marks2 int,
+    -> ADD COLUMN Marks3 int;
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student
+    -> ;
++-----+------+-----+--------+--------+--------+
+| USN | Name | Age | Marks1 | Marks2 | Marks3 |
++-----+------+-----+--------+--------+--------+
+| 101 | Sid  |  20 |   NULL |   NULL |   NULL |
+| 102 | Jay  |  21 |   NULL |   NULL |   NULL |
+| 103 | Max  |  21 |   NULL |   NULL |   NULL |
+| 104 | ABC  |  21 |   NULL |   NULL |   NULL |
+| 105 | Kim  |  23 |   NULL |   NULL |   NULL |
+| 106 | Jim  |  18 |   NULL |   NULL |   NULL |
+| 107 | Pam  |  23 |   NULL |   NULL |   NULL |
+| 108 | Mat  |  21 |   NULL |   NULL |   NULL |
++-----+------+-----+--------+--------+--------+
+8 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Student
+    -> DROP COLUMN Marks3;
+Query OK, 0 rows affected (8.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student
+    -> ;
++-----+------+-----+--------+--------+
+| USN | Name | Age | Marks1 | Marks2 |
++-----+------+-----+--------+--------+
+| 101 | Sid  |  20 |   NULL |   NULL |
+| 102 | Jay  |  21 |   NULL |   NULL |
+| 103 | Max  |  21 |   NULL |   NULL |
+| 104 | ABC  |  21 |   NULL |   NULL |
+| 105 | Kim  |  23 |   NULL |   NULL |
+| 106 | Jim  |  18 |   NULL |   NULL |
+| 107 | Pam  |  23 |   NULL |   NULL |
+| 108 | Mat  |  21 |   NULL |   NULL |
++-----+------+-----+--------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from student4;
++--------+---------+
+| st_USN | st_Name |
++--------+---------+
+|    101 | Sid     |
+|    102 | Jay     |
+|    103 | Max     |
+|    104 | Ram     |
+|    105 | Kim     |
++--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> DROP TABLE Student4;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from student4;
+ERROR 1146 (42S02): Table 'student_data.student4' doesn't exist
+mysql> create database CustomerOrder_Data;
+Query OK, 1 row affected (0.09 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| customerorder_data |
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use customerorder_data;
+Database changed
+mysql> CREATE TABLE Salesman (
+    ->     salesman_id int,
+    ->     name varchar(40),
+    ->     city varchar(40),
+    ->     PRIMARY KEY (salesman_id)
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+mysql> CREATE TABLE Salesman (
+    -> salesman_id int,
+    -> name varchar(40),
+    -> city varchar(40),
+    -> PRIMARY KEY (salesman_id)
+    -> );
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> CREATE TABLE Customer (
+    -> Cust_id int,
+    -> cust_name varchar(40),
+    -> city varchar(40) DEFAULT 'Pune',
+    -> grade int,
+    -> salesman_id int NOT NULL,
+    -> PRIMARY KEY (Cust_id),
+    -> FOREIGN KEY (salesman_id) REFERENCES Salesman(salesman_id)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> CREATE TABLE Orders (
+    -> Order_no int,
+    -> purhase_amt int,
+    -> order_date DATE,
+    -> customer_id int NOT NULL,
+    -> salesman_id int NOT NULL,
+    -> PRIMARY KEY (Order_no),
+    -> FOREIGN KEY (customer_id) REFERENCES Customer(Cust_id),
+    -> FOREIGN KEY (salesman_id) REFERENCES Salesman(salesman_id)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
++------------------------------+
+| Tables_in_customerorder_data |
++------------------------------+
+| customer                     |
+| orders                       |
+| salesman                     |
++------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO Salesman(salesman_id, name, city)
+    -> VALUES (301,'Sid', 'Pune'),
+    -> (302, 'Joseph', 'California'),
+    -> (303, 'Peter', 'New York'),
+    -> (304, 'John', 'Tokyo'),
+    -> (305, 'Max', 'San Diego');
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from salesman;
++-------------+--------+------------+
+| salesman_id | name   | city       |
++-------------+--------+------------+
+|         301 | Sid    | Pune       |
+|         302 | Joseph | California |
+|         303 | Peter  | New York   |
+|         304 | John   | Tokyo      |
+|         305 | Max    | San Diego  |
++-------------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO Customer(Cust_id, cust_name, city, grade, salesman_id)
+    -> VALUES (201,'Robert', 'Florida', 100, 303),
+    -> (202,'Rob', 'New York', 190, 303),
+    -> (203,'Ron W', 'Denver', 80, 305),
+    -> (204,'Rohit', 60, 301),
+    -> (205,'Bob', 'New York', 70, 304),
+    -> (206,'Kate', 'Los Santos', 200, 302);
+ERROR 1136 (21S01): Column count doesn't match value count at row 4
+mysql> INSERT INTO Customer(Cust_id, cust_name, city, grade, salesman_id)
+    -> VALUES (201,'Robert', 'Florida', 100, 303),
+    -> (202,'Rob', 'New York', 190, 303),
+    -> (203,'Ron W', 'Denver', 80, 305),
+    -> (204,'Rohit', 60, 301),
+    -> (205,'Bob', 'New York', 70, 304),
+    -> (206,'Kate', 'Los Santos', 200, 302);
+ERROR 1136 (21S01): Column count doesn't match value count at row 4
+mysql> INSERT INTO Customer(Cust_id, cust_name, city, grade, salesman_id)
+    -> VALUES (201,'Robert', 'Florida', 100, 303),
+    -> (202,'Rob', 'New York', 190, 303),
+    -> (203,'Ron W', 'Denver', 80, 305),
+    -> (204,'Rohit', 60, 'Pune', 301),
+    -> (205,'Bob', 'New York', 70, 304),
+    -> (206,'Kate', 'Los Santos', 200, 302);
+ERROR 1366 (HY000): Incorrect integer value: 'Pune' for column 'grade' at row 4
+mysql> INSERT INTO Customer(Cust_id, cust_name, city, grade, salesman_id)
+    -> VALUES (201,'Robert', 'Florida', 100, 303),
+    -> (202,'Rob', 'New York', 190, 303),
+    -> (203,'Ron W', 'Denver', 80, 305),
+    -> (204,'Rohit', 'Pune', 60, 301),
+    -> (205,'Bob', 'New York', 70, 304),
+    -> (206,'Kate', 'Los Santos', 200, 302);
+Query OK, 6 rows affected (0.03 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO Orders(Order_no, purchase_amt, order-date, customer_id, salesman_id)
+    -> VALUES (101, 1000, 2022-08-15, 201, 303),
+    -> (102, 6500, 2022-02-06, 202, 303),
+    -> (103, 2500, 2021-03-04, 203, 305),
+    -> (104, 5500, 2020-11-26, 204, 301),
+    -> (105, 7999, 2022-09-09, 205, 304),
+    -> (106, 5900, 2022-09-14, 206, 302);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order-date, customer_id, salesman_id)
+VALUES (101, 1000, 2022-08-15, 201, 303' at line 1
+mysql> INSERT INTO Orders(Order_no, purchase_amt, order-date, customer_id, salesman_id)
+    -> VALUES (101, 1000, '2022-08-15', 201, 303),
+    -> (102, 6500, '2022-02-06', 202, 303),
+    -> (103, 2500, '2021-03-04', 203, 305),
+    -> (104, 5500, '2020-11-26', 204, 301),
+    -> (105, 7999, '2022-09-09', 205, 304),
+    -> (106, 5900, '2022-09-14', 206, 302);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order-date, customer_id, salesman_id)
+VALUES (101, 1000, '2022-08-15', 201, 3' at line 1
+mysql> INSERT INTO Orders(Order_no, purchase_amt, order_date, customer_id, salesman_id)
+    -> VALUES (101, 1000, '2022-08-15', 201, 303),
+    -> (102, 6500, '2022-02-06', 202, 303),
+    -> (103, 2500, '2021-03-04', 203, 305),
+    -> (104, 5500, '2020-11-26', 204, 301),
+    -> (105, 7999, '2022-09-09', 205, 304),
+    -> (106, 5900, '2022-09-14', 206, 302);
+ERROR 1054 (42S22): Unknown column 'purchase_amt' in 'field list'
+mysql> INSERT INTO Orders(Order_no, purhase_amt, order_date, customer_id, salesman_id)
+    -> VALUES (101, 1000, '2022-08-15', 201, 303),
+    -> (102, 6500, '2022-02-06', 202, 303),
+    -> (103, 2500, '2021-03-04', 203, 305),
+    -> (104, 5500, '2020-11-26', 204, 301),
+    -> (105, 7999, '2022-09-09', 205, 304),
+    -> (106, 5900, '2022-09-14', 206, 302);
+Query OK, 6 rows affected (0.02 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> FROM Customer
+    -> WHERE city != 'New York'
+    -> AND grade > 100;
++---------+-----------+------------+-------+-------------+
+| Cust_id | cust_name | city       | grade | salesman_id |
++---------+-----------+------------+-------+-------------+
+|     206 | Kate      | Los Santos |   200 |         302 |
++---------+-----------+------------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM Customer
+    -> WHERE city != 'New York'
+    -> AND grade < 100;
++---------+-----------+--------+-------+-------------+
+| Cust_id | cust_name | city   | grade | salesman_id |
++---------+-----------+--------+-------+-------------+
+|     203 | Ron W     | Denver |    80 |         305 |
+|     204 | Rohit     | Pune   |    60 |         301 |
++---------+-----------+--------+-------+-------------+
+2 rows in set (0.00 sec)
+
+mysql>  SELECT MAX(purhase_amt), cust_id AS Maximum_purchase_amt FROM Customer;
+ERROR 1054 (42S22): Unknown column 'purhase_amt' in 'field list'
+mysql>  SELECT MAX(purhase_amt), customer_id AS Maximum_purchase_amt FROM Orders;
++------------------+----------------------+
+| MAX(purhase_amt) | Maximum_purchase_amt |
++------------------+----------------------+
+|             7999 |                  201 |
++------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT MAX(purhase_amt), customer_id AS Customer ID FROM Orders;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID FROM Orders' at line 1
+mysql>  SELECT MAX(purhase_amt), customer_id AS Customer_ID FROM Orders;
++------------------+-------------+
+| MAX(purhase_amt) | Customer_ID |
++------------------+-------------+
+|             7999 |         201 |
++------------------+-------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT MAX(purhase_amt), customer_id AS Customer_ID FROM Orders ORDER BY purhase_amt;
++------------------+-------------+
+| MAX(purhase_amt) | Customer_ID |
++------------------+-------------+
+|             7999 |         201 |
++------------------+-------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT purhase_amt, customer_id AS Customer_ID FROM Orders ORDER BY purhase_amt desc LIMIT 1;
++-------------+-------------+
+| purhase_amt | Customer_ID |
++-------------+-------------+
+|        7999 |         205 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT MAX(purhase_amt), customer_id AS Customer_ID FROM Orders ORDER BY desc purhase_amt;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc purhase_amt' at line 1
+mysql>  SELECT MAX(purhase_amt), customer_id AS Customer_ID FROM Orders ORDER BY purhase_amt desc;
++------------------+-------------+
+| MAX(purhase_amt) | Customer_ID |
++------------------+-------------+
+|             7999 |         201 |
++------------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATEUPDATE Orders
+    -> SET date = '2022-09-09'
+    -> WHERE Order_no < 110 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UPDATEUPDATE Orders
+SET date = '2022-09-09'
+WHERE Order_no < 110' at line 1
+mysql> UPDATE Orders
+    -> SET date = '2022-09-09'
+    -> WHERE Order_no < 110;
+ERROR 1054 (42S22): Unknown column 'date' in 'field list'
+mysql> UPDATE Orders
+    -> SET order_date = '2022-09-09'
+    -> WHERE Order_no < 110;
+Query OK, 5 rows affected (0.03 sec)
+Rows matched: 6  Changed: 5  Warnings: 0
+
+mysql> select * from Orders
+    -> ;
++----------+-------------+------------+-------------+-------------+
+| Order_no | purhase_amt | order_date | customer_id | salesman_id |
++----------+-------------+------------+-------------+-------------+
+|      101 |        1000 | 2022-09-09 |         201 |         303 |
+|      102 |        6500 | 2022-09-09 |         202 |         303 |
+|      103 |        2500 | 2022-09-09 |         203 |         305 |
+|      104 |        5500 | 2022-09-09 |         204 |         301 |
+|      105 |        7999 | 2022-09-09 |         205 |         304 |
+|      106 |        5900 | 2022-09-09 |         206 |         302 |
++----------+-------------+------------+-------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT purhase_amt, customer_id, order_date FROM Orders WHERE purhase_amt>=2000 && purhase_amt<=600 ORDER BY purhase_amt;
+Empty set, 1 warning (0.00 sec)
+
+mysql> SELECT purhase_amt, customer_id, order_date FROM Orders WHERE purhase_amt>=2000 && purhase_amt<=600;
+Empty set, 1 warning (0.00 sec)
+
+mysql> SELECT purhase_amt, customer_id, order_date FROM Orders WHERE purhase_amt>=2000 && purhase_amt<=6000;
++-------------+-------------+------------+
+| purhase_amt | customer_id | order_date |
++-------------+-------------+------------+
+|        2500 |         203 | 2022-09-09 |
+|        5500 |         204 | 2022-09-09 |
+|        5900 |         206 | 2022-09-09 |
++-------------+-------------+------------+
+3 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT purhase_amt, customer_id, order_date
+    -> FROM Orders
+    -> WHERE purhase_amt>=2000
+    -> AND purhase_amt<=6000;
++-------------+-------------+------------+
+| purhase_amt | customer_id | order_date |
++-------------+-------------+------------+
+|        2500 |         203 | 2022-09-09 |
+|        5500 |         204 | 2022-09-09 |
+|        5900 |         206 | 2022-09-09 |
++-------------+-------------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+ 

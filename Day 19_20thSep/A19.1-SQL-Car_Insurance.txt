@@ -1,0 +1,770 @@
+Insurance Database 
+
+Consider the Insurance database given below. 
+
+PERSON (driver – id #: String, name: string, address: string) 
+
+CAR (regno: string, model: string, year: int) 
+
+ACCIDENT (report-number: int, accd-date: date, location: string) 
+
+OWNS (driver-id #: string, regno: string) 
+
+PARTICIPATED (driver-id: string, Regno: string, report-number: int, damage amount: int) 
+
+create the table for above database. and write sql queries for the below 
+
+1. Find the total number of people who owned cars that were involved in accidents in 1989.
+SELECT COUNT(p.driver_id) as People 
+FROM participated p,accident a 
+WHERE a.accd_date like '1989%' 
+AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      2 |
++--------+
+
+2. Find the number of accidents in which the cars belonging to “Rahul” were involved. 
+mysql> SELECT COUNT(driver_id) as TotalRahuls
+    -> FROM participated
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
++-------------+
+| TotalRahuls |
++-------------+
+|           2 |
++-------------+
+
+
+3.Update the damage amount for the car with reg number “KA-12-1” in the
+accident with report number “1” to 3000.
+
+UPDATE participated
+SET damage_amount = 3000
+WHERE regno = 'KA-12-1' AND report_number = 1;
+mysql> select * from participated;
++-----------+----------+---------------+---------------+
+| driver_id | regno    | report_number | damage_amount |
++-----------+----------+---------------+---------------+
+| DR02      | DL-09-23 |             3 |          3200 |
+| DR03      | KA-12-1  |             1 |          3000 |
+| DR04      | KA-20-2  |             2 |          6500 |
++-----------+----------+---------------+---------------+
+
+
+1) PERSON (driver – id #: String, name: string, address: string) 
+CREATE TABLE person(
+driver_id varchar(10),
+name varchar(10),
+address varchar(10),
+PRIMARY KEY (driver_id)
+);
+
+INSERT INTO person
+VALUES ('DR01', 'Sid', 'Pune'),
+('DR02', 'Kim', 'Delhi'),
+('DR03', 'Rahul', 'Udupi'),
+('DR04', 'Rahul', 'Hubli'),
+('DR05', 'Val', 'Bhor');
+
+2)CAR (regno: string, model: string, year: int) 
+CREATE TABLE car(
+regno varchar(10),
+model varchar(10),
+year int,
+PRIMARY KEY (regno)
+);
+
+INSERT INTO car 
+VALUES('MH-12-10', 'BMW', 1980),
+('KA-12-1', 'Alto', 1985),
+('DL-09-23', 'M800', 1987),
+('KA-20-2', 'Jeep', 1981),
+('TL-22-3', 'Audi', 1986);
+
+3)ACCIDENT (report-number: int, accd-date: date, location: string)
+CREATE TABLE accident(
+report_number int,
+accd_date DATE,
+location varchar (10),
+PRIMARY KEY (report_number)
+);
+
+INSERT INTO accident
+VALUES (1, '1989-09-09', 'Miraj'),
+(2, '1993-09-09', 'Ozar'),
+(3, '1989-12-12', 'Bhor'),
+(4, '1989-03-03', 'Karad'),
+(5, '1990-09-09', 'Ankula');
+
+4)OWNS (driver-id #: string, regno: string)  
+CREATE TABLE owns(
+driver_id varchar(10),
+regno varchar(10),
+PRIMARY KEY (driver_id, regno),
+FOREIGN KEY (driver_id) REFERENCES person(driver_id),
+FOREIGN KEY (regno) REFERENCES car (regno)
+);
+
+INSERT INTO owns
+VALUES('DR01', 'MH-12-10'),
+('DR02', 'DL-09-23'),
+('DR03', 'KA-12-1'),
+('DR04', 'KA-20-2'),
+('DR05', 'TL-22-3');
+
+5)PARTICIPATED (driver-id: string, Regno: string, report-number: int, damage amount: int) 
+CREATE TABLE participated(
+driver_id varchar(10),
+regno varchar(10),
+report_number int,
+damage_amount int,
+PRIMARY KEY (driver_id, regno, report_number),
+FOREIGN KEY (driver_id) REFERENCES person (driver_id),
+FOREIGN KEY (regno) REFERENCES car (regno), 
+FOREIGN KEY (report_number) REFERENCES accident (report_number)
+);
+
+INSERT INTO participated
+VALUES('DR03', 'KA-12-1',1, 5000),
+('DR04', 'KA-20-2',2, 6500),
+('DR02', 'DL-09-23',3, 3200);
+
+
+UPDATE accident
+SET report_number = 3
+WHERE location = 'Miraj';
+
+SELECT COUNT(driver_id) 
+from participated 
+WHERE report_number 
+IN (SELECT report_number FROM accident WHERE accd_date like)
+
+
+UPDATE accident
+SET report_number = 3
+WHERE location = 'Miraj';
+
+
+
+*********
+
+SELECT COUNT(driver_id) as TotalRahuls
+FROM participated 
+WHERE driver_id 
+IN (SELECT driver_id FROM person WHERE name = 'Rahul');
+
+
+
+
+
+
+*********************OUTPUT*********************
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| customerorder_data |
+| demo               |
+| employee_data      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> CREATE database car_insurance;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| car_insurance      |
+| customerorder_data |
+| demo               |
+| employee_data      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use car_insurance;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| car_insurance      |
+| customerorder_data |
+| demo               |
+| employee_data      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_data       |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> desc employee_data;
+ERROR 1146 (42S02): Table 'car_insurance.employee_data' doesn't exist
+mysql> use employee_data;
+Database changed
+mysql> show tables;
++-------------------------+
+| Tables_in_employee_data |
++-------------------------+
+| department              |
+| employee                |
+| job_history             |
++-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Employee_ID   | int         | NO   | PRI | NULL    |       |
+| First_Name    | varchar(40) | YES  |     | NULL    |       |
+| Last_Name     | varchar(40) | YES  |     | NULL    |       |
+| Hire_Date     | date        | YES  |     | NULL    |       |
+| Job_ID        | int         | NO   |     | NULL    |       |
+| Salary        | int         | YES  |     | NULL    |       |
+| Manager_ID    | int         | YES  |     | NULL    |       |
+| Department_ID | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc department;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Dpt_Code      | int         | NO   | PRI | NULL    |       |
+| Dpt_Name      | varchar(40) | YES  |     | NULL    |       |
+| Dpt_Allotment | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc job_history;
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| Employee_ID | int  | NO   | MUL | NULL    |       |
+| Start_Date  | date | YES  |     | NULL    |       |
+| End_Date    | date | YES  |     | NULL    |       |
+| Job_ID      | int  | YES  |     | NULL    |       |
+| Dept_ID     | int  | YES  | MUL | NULL    |       |
++-------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> use car_insurance;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show databse
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databse' at line 1
+mysql> CREATE TABLE person(
+    -> driver_id varchar(10),
+    -> name varchar(10),
+    -> address varchar(10),
+    -> PRIMARY KEY (driver_id)
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> CREATE TABLE car(
+    -> regno varchar(10),
+    -> model varchar(10),
+    -> year int,
+    -> PRIMARY KEY (regno)
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> CREATE TABLE accident(
+    -> report_number int,
+    -> accd_date DATE,
+    -> location varchar (10),
+    -> PRIMARY KEY (report_number)
+    -> );
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> CREATE TABLE owns(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> PRIMARY KEY (driver_id, regno),
+    -> FOREIGN KEY (driver_id) REFERNCES person(driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERNCES person(driver_id),
+FOREIGN KEY (regno) REFERENCES car (regno)
+)' at line 5
+mysql> CREATE TABLE owns(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> PRIMARY KEY (driver_id, regno),
+    -> FOREIGN KEY (driver_id) REFERENCES person(driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno)
+    -> );
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> CREATE TABLE participated(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> report-number int,
+    -> damage-amount int,
+    -> PRIMARY KEY (driver_id, regno, report-number),
+    -> FOREIGN KEY (driver_id) REFERENCES person (driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno),
+    -> FOREIGN KEY (report_number) REFERENCES accident (report_number)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-number int,
+damage-amount int,
+PRIMARY KEY (driver_id, regno, report-number),
+F' at line 4
+mysql> CREATE TABLE participated(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> report_number int,
+    -> damage-amount int,
+    -> PRIMARY KEY (driver_id, regno, report-number),
+    -> FOREIGN KEY (driver_id) REFERENCES person (driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno),
+    -> FOREIGN KEY (report_number) REFERENCES accident (report_number)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-amount int,
+PRIMARY KEY (driver_id, regno, report-number),
+FOREIGN KEY (driver_' at line 5
+mysql> CREATE TABLE participated(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> report_number int,
+    -> damage-amount int,
+    -> PRIMARY KEY (driver_id, regno, report_number),
+    -> FOREIGN KEY (driver_id) REFERENCES person (driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno),
+    -> FOREIGN KEY (report_number) REFERENCES accident (report_number)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-amount int,
+PRIMARY KEY (driver_id, regno, report_number),
+FOREIGN KEY (driver_' at line 5
+mysql> CREATE TABLE participated(
+    -> driver_id varchar(10),
+    -> regno varchar(10),
+    -> report_number int,
+    -> damage_amount int,
+    -> PRIMARY KEY (driver_id, regno, report_number),
+    -> FOREIGN KEY (driver_id) REFERENCES person (driver_id),
+    -> FOREIGN KEY (regno) REFERENCES car (regno),
+    -> FOREIGN KEY (report_number) REFERENCES accident (report_number)
+    -> );
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> show tables;
++-------------------------+
+| Tables_in_car_insurance |
++-------------------------+
+| accident                |
+| car                     |
+| owns                    |
+| participated            |
+| person                  |
++-------------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc accident;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| report_number | int         | NO   | PRI | NULL    |       |
+| accd_date     | date        | YES  |     | NULL    |       |
+| location      | varchar(10) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc car;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| regno | varchar(10) | NO   | PRI | NULL    |       |
+| model | varchar(10) | YES  |     | NULL    |       |
+| year  | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc owns;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| regno     | varchar(10) | NO   | PRI | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc participated;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| driver_id     | varchar(10) | NO   | PRI | NULL    |       |
+| regno         | varchar(10) | NO   | PRI | NULL    |       |
+| report_number | int         | NO   | PRI | NULL    |       |
+| damage_amount | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc person;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(10) | YES  |     | NULL    |       |
+| address   | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO person
+    -> VALUES ('DR01', 'Sid', 'Pune'),
+    -> ('DR02', 'Kim', 'Delhi'),
+    -> ('DR03', 'Rahul', 'Udupi'),
+    -> ('DR04', 'Rahul', 'Hubli'),
+    -> ('DR05', 'Val', 'Bhor')
+    -> ;
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO car
+    -> VALUES('MH-12-10', 'BMW', 1980),
+    -> ('KA-12-1', 'Alto', 1985),
+    -> ('DL-09-23', 'M800', 1987),
+    -> ('KA-20-2', 'Jeep', 1981),
+    -> ('TL-22-3', 'Audi', 1986);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO accident
+    -> VALUES (1, '1989-09-09', 'Miraj'),
+    -> (2, '1993-09-09', 'Ozar'),
+    -> (3, '1989-12-12', 'Bhor'),
+    -> (4, '1989-03-03', 'Karad'),
+    -> (5, '1990-09-09', 'Ankula');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO owns
+    -> VALUES('DR01', 'MH-12-10'),
+    -> ('DR02', 'DL-09-23'),
+    -> ('DR03', 'KA-12-1'),
+    -> ('DR04', 'KA-20-2'),
+    -> ('DR05', 'TL-22-3');
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO participated
+    -> VALUES('DR03', 'KA-12-1',1, 5000),
+    -> ('DR04', 'KA-20-2',2, 6500),
+    -> ('DR02', 'DL-09-23',3, 3200);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT COUNT(distinct o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date like '%1989'
+    -> AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      0 |
++--------+
+1 row in set (0.04 sec)
+
+mysql> SELECT COUNT(distinct o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date like '%89'
+    -> AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(distinct o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date like '1989'
+    -> AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(distinct o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date = '1989-%-%'
+    -> AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
+ERROR 1525 (HY000): Incorrect DATE value: '1989-%-%'
+mysql> SELECT COUNT(distinct o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date = '%89' AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
+ERROR 1525 (HY000): Incorrect DATE value: '%89'
+mysql> show tables;
++-------------------------+
+| Tables_in_car_insurance |
++-------------------------+
+| accident                |
+| car                     |
+| owns                    |
+| participated            |
+| person                  |
++-------------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc accident;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| report_number | int         | NO   | PRI | NULL    |       |
+| accd_date     | date        | YES  |     | NULL    |       |
+| location      | varchar(10) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc car;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| regno | varchar(10) | NO   | PRI | NULL    |       |
+| model | varchar(10) | YES  |     | NULL    |       |
+| year  | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc owns;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| regno     | varchar(10) | NO   | PRI | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc paricipated;
+ERROR 1146 (42S02): Table 'car_insurance.paricipated' doesn't exist
+mysql> desc participated;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| driver_id     | varchar(10) | NO   | PRI | NULL    |       |
+| regno         | varchar(10) | NO   | PRI | NULL    |       |
+| report_number | int         | NO   | PRI | NULL    |       |
+| damage_amount | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc person;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(10) | YES  |     | NULL    |       |
+| address   | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show person;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'person' at line 1
+mysql> show table person;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'person' at line 1
+mysql> show tables person;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'person' at line 1
+mysql> select * from person;
++-----------+-------+---------+
+| driver_id | name  | address |
++-----------+-------+---------+
+| DR01      | Sid   | Pune    |
+| DR02      | Kim   | Delhi   |
+| DR03      | Rahul | Udupi   |
+| DR04      | Rahul | Hubli   |
+| DR05      | Val   | Bhor    |
++-----------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from owns;
++-----------+----------+
+| driver_id | regno    |
++-----------+----------+
+| DR02      | DL-09-23 |
+| DR03      | KA-12-1  |
+| DR04      | KA-20-2  |
+| DR01      | MH-12-10 |
+| DR05      | TL-22-3  |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from participated;
++-----------+----------+---------------+---------------+
+| driver_id | regno    | report_number | damage_amount |
++-----------+----------+---------------+---------------+
+| DR02      | DL-09-23 |             3 |          3200 |
+| DR03      | KA-12-1  |             1 |          5000 |
+| DR04      | KA-20-2  |             2 |          6500 |
++-----------+----------+---------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from accident;
++---------------+------------+----------+
+| report_number | accd_date  | location |
++---------------+------------+----------+
+|             1 | 1989-09-09 | Miraj    |
+|             2 | 1993-09-09 | Ozar     |
+|             3 | 1989-12-12 | Bhor     |
+|             4 | 1989-03-03 | Karad    |
+|             5 | 1990-09-09 | Ankula   |
++---------------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(o.driver_id) as People
+    -> FROM owns o,participated p,accident a
+    -> WHERE a.accd_date like '%89'
+    -> AND o.regno=p.regno
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(p.driver_id) as People
+    -> FROM participated p,accident a
+    -> WHERE a.accd_date like '%89'
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE TABLE accident
+    -> SET report_number = 3
+    -> WHERE location = 'Miraj';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE accident
+SET report_number = 3
+WHERE location = 'Miraj'' at line 1
+mysql> UPDATE accident
+    -> SET report_number = 3
+    -> WHERE location = 'Miraj';
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`car_insurance`.`participated`, CONSTRAINT `participated_ibfk_3` FOREIGN KEY (`report_number`) REFERENCES `accident` (`report_number`))
+mysql> SELECT COUNT(p.driver_id) as People
+    -> FROM participated p,accident a
+    -> WHERE year(a.accd_date) like '1989'
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      2 |
++--------+
+1 row in set (0.02 sec)
+
+mysql> SELECT COUNT(p.driver_id) as People
+    -> FROM participated p,accident a
+    -> WHERE a.accd_date like '1989%'
+    -> AND p.report_number=a.report_number;
++--------+
+| People |
++--------+
+|      2 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT (driver_id)
+    -> from participated
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
+ERROR 1630 (42000): FUNCTION car_insurance.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT COUNT (participated.driver_id)
+    -> FROM participated
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
+ERROR 1630 (42000): FUNCTION car_insurance.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT COUNT (p.driver_id)
+    -> FROM participated p
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
+ERROR 1630 (42000): FUNCTION car_insurance.COUNT does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT COUNT(driver_id)
+    -> FROM participated
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
++------------------+
+| COUNT(driver_id) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(driver_id) as TotalRahuls
+    -> FROM participated
+    -> WHERE driver_id
+    -> IN (SELECT driver_id FROM person WHERE name = 'Rahul');
++-------------+
+| TotalRahuls |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE paricipated
+    -> SET damage_amount = 3000
+    -> WHERE regno = 'KA-12-1' AND report_number = 1;
+ERROR 1146 (42S02): Table 'car_insurance.paricipated' doesn't exist
+mysql> UPDATE participated
+    -> SET damage_amount = 3000
+    -> WHERE regno = 'KA-12-1' AND report_number = 1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from participated;
++-----------+----------+---------------+---------------+
+| driver_id | regno    | report_number | damage_amount |
++-----------+----------+---------------+---------------+
+| DR02      | DL-09-23 |             3 |          3200 |
+| DR03      | KA-12-1  |             1 |          3000 |
+| DR04      | KA-20-2  |             2 |          6500 |
++-----------+----------+---------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql>
