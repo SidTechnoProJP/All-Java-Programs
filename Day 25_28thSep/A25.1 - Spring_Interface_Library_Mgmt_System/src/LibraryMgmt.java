@@ -43,7 +43,7 @@ public class LibraryMgmt {
             System.out.println("Enter your choice : ");
             int choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> librarian.searchBook)();
+                case 1 -> librarian.searchBook();
                 case 2 -> librarian.addBorrower();
                 case 3 -> librarian.loanHistory();
                 case 4 -> librarian.addBook();

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/1.1-MinMaxArray/1.1-MinMaxArray.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/1.1-MinMaxArray/1.1-MinMaxArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/1.2 Reverse Array/1.2 Reverse Array.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/1.2 Reverse Array/1.2 Reverse Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/A1.3 ArraySort/A1.3 ArraySort.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/A1.3 ArraySort/A1.3 ArraySort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/A1.4 SwapElelments/A1.4 SwapElelments.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/A1.4 SwapElelments/A1.4 SwapElelments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/A1.5 DuplicateValues/A1.5 DuplicateValues.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/A1.5 DuplicateValues/A1.5 DuplicateValues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 1_24thAug/A1.6 SecondLargest/A1.6 SecondLargest.iml" filepath="$PROJECT_DIR$/Day 1_24thAug/A1.6 SecondLargest/A1.6 SecondLargest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 11_8thSep/A11.0 FileHandlingDemo/A11.0 FileHandlingDemo.iml" filepath="$PROJECT_DIR$/Day 11_8thSep/A11.0 FileHandlingDemo/A11.0 FileHandlingDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 11_8thSep/A11.1 FileHandling-CopyContentsOf2FilesInto1/A11.1 FileHandling-CopyContentsOf2FilesInto1.iml" filepath="$PROJECT_DIR$/Day 11_8thSep/A11.1 FileHandling-CopyContentsOf2FilesInto1/A11.1 FileHandling-CopyContentsOf2FilesInto1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 11_8thSep/A11.2 FileHandling-CountLinesWordsChars/A11.2 FileHandling-CountLinesWordsChars.iml" filepath="$PROJECT_DIR$/Day 11_8thSep/A11.2 FileHandling-CountLinesWordsChars/A11.2 FileHandling-CountLinesWordsChars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 11_8thSep/A11.3 FileHandling-StudentMarksTotalAvg/A11.3 FileHandling-StudentMarksTotalAvg.iml" filepath="$PROJECT_DIR$/Day 11_8thSep/A11.3 FileHandling-StudentMarksTotalAvg/A11.3 FileHandling-StudentMarksTotalAvg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 23_26thSep/A26.1-SpringDemo/A26.1-SpringDemo.iml" filepath="$PROJECT_DIR$/Day 23_26thSep/A26.1-SpringDemo/A26.1-SpringDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.1 ReverseASting/A3.1 ReverseASting.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.1 ReverseASting/A3.1 ReverseASting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.2 FindDuplicateWordsInString/A3.2 FindDuplicateWordsInString.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.2 FindDuplicateWordsInString/A3.2 FindDuplicateWordsInString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.3 FindSubString/A3.3 FindSubString.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.3 FindSubString/A3.3 FindSubString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.4 DeleteCharactersAtSpecifiedPositions/A3.4 DeleteCharactersAtSpecifiedPositions.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.4 DeleteCharactersAtSpecifiedPositions/A3.4 DeleteCharactersAtSpecifiedPositions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.5 MergeStringsAndPrintCapitals/A3.5 MergeStringsAndPrintCapitals.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.5 MergeStringsAndPrintCapitals/A3.5 MergeStringsAndPrintCapitals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.6 ReplaceSubString/A3.6 ReplaceSubString.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.6 ReplaceSubString/A3.6 ReplaceSubString.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 3_26thAug/A3.7 MemberEmpolyeeManager/A3.7 MemberEmpolyeeManager.iml" filepath="$PROJECT_DIR$/Day 3_26thAug/A3.7 MemberEmpolyeeManager/A3.7 MemberEmpolyeeManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 4_29thAug/A4.1 RectangleAreaAndMinMaxArea/A4.1 RectangleAreaAndMinMaxArea.iml" filepath="$PROJECT_DIR$/Day 4_29thAug/A4.1 RectangleAreaAndMinMaxArea/A4.1 RectangleAreaAndMinMaxArea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 4_29thAug/A4.2 HardwareStoreInvoice/A4.2 HardwareStoreInvoice.iml" filepath="$PROJECT_DIR$/Day 4_29thAug/A4.2 HardwareStoreInvoice/A4.2 HardwareStoreInvoice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 4_29thAug/A4.3 AbstractRectSqrTriArea/A4.3 AbstractRectSqrTriArea.iml" filepath="$PROJECT_DIR$/Day 4_29thAug/A4.3 AbstractRectSqrTriArea/A4.3 AbstractRectSqrTriArea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 6_1stSep/A6.1 CustomExceptionClass/A6.1 CustomExceptionClass.iml" filepath="$PROJECT_DIR$/Day 6_1stSep/A6.1 CustomExceptionClass/A6.1 CustomExceptionClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 6_1stSep/A6.2 CollectionClassArrayList - Employee Data/A6.2 CollectionClassArrayList - Employee Data.iml" filepath="$PROJECT_DIR$/Day 6_1stSep/A6.2 CollectionClassArrayList - Employee Data/A6.2 CollectionClassArrayList - Employee Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 6_1stSep/A6.3 ExceptionHandling-IntExtMarks/A6.3 ExceptionHandling-IntExtMarks.iml" filepath="$PROJECT_DIR$/Day 6_1stSep/A6.3 ExceptionHandling-IntExtMarks/A6.3 ExceptionHandling-IntExtMarks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 7_2ndSep/A7.1 Linked List - EmployeeData/A7.1 Linked List - EmployeeData.iml" filepath="$PROJECT_DIR$/Day 7_2ndSep/A7.1 Linked List - EmployeeData/A7.1 Linked List - EmployeeData.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 7_2ndSep/A7.2 Package - ArrayOperations/A7.2 Package - ArrayOperations.iml" filepath="$PROJECT_DIR$/Day 7_2ndSep/A7.2 Package - ArrayOperations/A7.2 Package - ArrayOperations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 8_5thSep/A8.0 LamdaFunctionDemo/A8.0 LamdaFunctionDemo.iml" filepath="$PROJECT_DIR$/Day 8_5thSep/A8.0 LamdaFunctionDemo/A8.0 LamdaFunctionDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 8_5thSep/A8.1 Lambda-RectSqrTriArea/A8.1 Lambda-RectSqrTriArea.iml" filepath="$PROJECT_DIR$/Day 8_5thSep/A8.1 Lambda-RectSqrTriArea/A8.1 Lambda-RectSqrTriArea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 8_5thSep/A8.1 StreamAPI - EmployeeData/A8.1 StreamAPI - EmployeeData.iml" filepath="$PROJECT_DIR$/Day 8_5thSep/A8.1 StreamAPI - EmployeeData/A8.1 StreamAPI - EmployeeData.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 9_6thSep/A9.0 JavaDateTime/A9.0 JavaDateTime.iml" filepath="$PROJECT_DIR$/Day 9_6thSep/A9.0 JavaDateTime/A9.0 JavaDateTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 9_6thSep/A9.1 DateAPI - DateOperations/A9.1 DateAPI - DateOperations.iml" filepath="$PROJECT_DIR$/Day 9_6thSep/A9.1 DateAPI - DateOperations/A9.1 DateAPI - DateOperations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Assignments.iml" filepath="$PROJECT_DIR$/.idea/Assignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 12_9thSep/Day 12_9thSep.iml" filepath="$PROJECT_DIR$/Day 12_9thSep/Day 12_9thSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 13_12thSep/Day 13_12thSep.iml" filepath="$PROJECT_DIR$/Day 13_12thSep/Day 13_12thSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 20_21stSep/Day 20_21stSep.iml" filepath="$PROJECT_DIR$/Day 20_21stSep/Day 20_21stSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 22_23rdSep/Day 22_23rdSep.iml" filepath="$PROJECT_DIR$/Day 22_23rdSep/Day 22_23rdSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 23_26thSep/Day 23_26thSep.iml" filepath="$PROJECT_DIR$/Day 23_26thSep/Day 23_26thSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 25_28thSep/Day 25_28thSep.iml" filepath="$PROJECT_DIR$/Day 25_28thSep/Day 25_28thSep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 2_25thAug/Day 2_25thAug.iml" filepath="$PROJECT_DIR$/Day 2_25thAug/Day 2_25thAug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 5_30thAug/Day 5_30thAug.iml" filepath="$PROJECT_DIR$/Day 5_30thAug/Day 5_30thAug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/Day2.1-MemberData/Day2.1-MemberData.iml" filepath="$PROJECT_DIR$/Other/Day2.1-MemberData/Day2.1-MemberData.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation/MiniEvaluation.iml" filepath="$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation/MiniEvaluation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation-15thSep-CRS/MiniEvaluation-15thSep-CRS.iml" filepath="$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation-15thSep-CRS/MiniEvaluation-15thSep-CRS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/MyProgram/MyProgram.iml" filepath="$PROJECT_DIR$/Other/MyProgram/MyProgram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/Practise/Practise.iml" filepath="$PROJECT_DIR$/Other/Practise/Practise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SRS-Additional-Assignment/SRS-Additional-Assignment.iml" filepath="$PROJECT_DIR$/SRS-Additional-Assignment/SRS-Additional-Assignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SRS-Assignment/SRS-Assignment.iml" filepath="$PROJECT_DIR$/SRS-Assignment/SRS-Assignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SRS4/SRS4.iml" filepath="$PROJECT_DIR$/SRS4/SRS4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/StudentData/StudentData.iml" filepath="$PROJECT_DIR$/Other/StudentData/StudentData.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StudentRegisterationSystem/StudentRegisterationSystem.iml" filepath="$PROJECT_DIR$/StudentRegisterationSystem/StudentRegisterationSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Other/streamDemo/streamDemo.iml" filepath="$PROJECT_DIR$/Other/streamDemo/streamDemo.iml" />
+    </modules>
+  </component>
+</project>

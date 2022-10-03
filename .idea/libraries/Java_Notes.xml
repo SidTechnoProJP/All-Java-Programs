@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Java Notes">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Java Notes/Dependency_injection_example.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Java Notes/fsp2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Java Notes/solution-code-spring-bean-life-cycle.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Java Notes/Setter_injection_example.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Java Notes/solution-code-spring-bean-scopes.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

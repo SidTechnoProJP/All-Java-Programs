@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="39bec593-0ef5-41da-8e94-e59be75c3930" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Day 11_8thSep/A11.0 FileHandlingDemo/A11.0 FileHandlingDemo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 11_8thSep/A11.1 FileHandling-CopyContentsOf2FilesInto1/A11.1 FileHandling-CopyContentsOf2FilesInto1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 11_8thSep/A11.2 FileHandling-CountLinesWordsChars/A11.2 FileHandling-CountLinesWordsChars.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 11_8thSep/A11.3 FileHandling-StudentMarksTotalAvg/A11.3 FileHandling-StudentMarksTotalAvg.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation-15thSep-CRS/MiniEvaluation-15thSep-CRS.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 16_15thSep/MiniEvaluation/MiniEvaluation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 1_24thAug/1.1-MinMaxArray/1.1-MinMaxArray.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 1_24thAug/A1.3 ArraySort/A1.3 ArraySort.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 1_24thAug/A1.4 SwapElelments/A1.4 SwapElelments.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 1_24thAug/A1.5 DuplicateValues/A1.5 DuplicateValues.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 1_24thAug/A1.6 SecondLargest/A1.6 SecondLargest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 23_26thSep/A26.1-SpringDemo/A26.1-SpringDemo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.1 ReverseASting/A3.1 ReverseASting.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.2 FindDuplicateWordsInString/A3.2 FindDuplicateWordsInString.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.3 FindSubString/A3.3 FindSubString.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.4 DeleteCharactersAtSpecifiedPositions/A3.4 DeleteCharactersAtSpecifiedPositions.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.5 MergeStringsAndPrintCapitals/A3.5 MergeStringsAndPrintCapitals.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.6 ReplaceSubString/A3.6 ReplaceSubString.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 3_26thAug/A3.7 MemberEmpolyeeManager/A3.7 MemberEmpolyeeManager.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 4_29thAug/A4.1 RectangleAreaAndMinMaxArea/A4.1 RectangleAreaAndMinMaxArea.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 4_29thAug/A4.2 HardwareStoreInvoice/A4.2 HardwareStoreInvoice.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 4_29thAug/A4.3 AbstractRectSqrTriArea/A4.3 AbstractRectSqrTriArea.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 6_1stSep/A6.2 CollectionClassArrayList - Employee Data/A6.2 CollectionClassArrayList - Employee Data.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 7_2ndSep/A7.1 Linked List - EmployeeData/A7.1 Linked List - EmployeeData.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 7_2ndSep/A7.2 Package - ArrayOperations/A7.2 Package - ArrayOperations.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 8_5thSep/A8.0 LamdaFunctionDemo/A8.0 LamdaFunctionDemo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 8_5thSep/A8.1 Lambda-RectSqrTriArea/A8.1 Lambda-RectSqrTriArea.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 8_5thSep/A8.1 StreamAPI - EmployeeData/A8.1 StreamAPI - EmployeeData.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 9_6thSep/A9.0 JavaDateTime/A9.0 JavaDateTime.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day 9_6thSep/A9.1 DateAPI - DateOperations/A9.1 DateAPI - DateOperations.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/Day2.1-MemberData/Day2.1-MemberData.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/MyProgram/MyProgram.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/Practise/Practise.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/StudentData/StudentData.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/streamDemo/streamDemo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRS-Additional-Assignment/SRS-Additional-Assignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRS-Assignment/SRS-Assignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRS4/SRS4.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentRegisterationSystem/StudentRegisterationSystem.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FQtqcau40KdlSiEVhW0i1gPwQs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Siddhesh U S/Desktop/Assignments"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39bec593-0ef5-41da-8e94-e59be75c3930" name="Changes" comment="" />
+      <created>1664436328154</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664436328154</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="srs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/SRS4/src/com/srs/srs.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

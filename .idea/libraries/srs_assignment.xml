@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="srs-assignment">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/SRS-Additional-Assignment/src/com/srs/assignment/srs-assignment.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
