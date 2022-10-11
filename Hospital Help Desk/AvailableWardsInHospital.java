@@ -1,0 +1,4 @@
+package IOSevaluationQuestion;
+
+enum AvailableWardsInHospital {
+}
