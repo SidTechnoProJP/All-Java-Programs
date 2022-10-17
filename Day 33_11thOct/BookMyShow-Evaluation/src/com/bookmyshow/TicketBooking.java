@@ -1,14 +1,12 @@
 package com.bookmyshow;
 
 public class TicketBooking extends Thread {
-    PaymentStatus paymentStatus;
-    PaymentMethod paymentMethod;
     private Show show;
     private RegisteredUser user;
     private int numberOfSeats;
     private Ticket ticket;
 
-    public TicketBooking(Show show, RegisteredUser user, int numberOfSeats, PaymentStatus paymentStatus, PaymentMethod paymentMethod) {
+    public TicketBooking(Show show, RegisteredUser user, int numberOfSeats, PaymentStatus paymentStatus, PaymentMethod paymentMethod ) {
         this.show = show;
         this.user = user;
         this.numberOfSeats = numberOfSeats;

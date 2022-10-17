@@ -1,30 +1,26 @@
 package com.bookmyshow;
 
 public class Movie {
-    private String name;
-    private Language language;
-    private Genre genre;
+    private String movieName;
+    private Language movieLanguage;
+    private Genre movieGenre;
 
     public Movie(String name, Language language, Genre genre) {
-        this.name = name;
-        this.language = language;
-        this.genre = genre;
+        this.movieName = name;
+        this.movieLanguage = language;
+        this.movieGenre = genre;
     }
 
-	public void setMovieName(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-        return name;
+	public String getMovieName() {
+        return movieName;
     }
 
     public Language getLanguage() {
-        return language;
+        return movieLanguage;
     }
 
     public Genre getGenre() {
-        return genre;
+        return movieGenre;
     }
 
 }

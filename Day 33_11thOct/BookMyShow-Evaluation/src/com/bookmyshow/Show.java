@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Show {
     private static int idCounter=0;
-    private int id;
+    private int showId;
     private Date showTime;
     private Movie movie;
     private Theatre theater;
@@ -11,7 +11,7 @@ public class Show {
 
     public Show(Date showTime, Movie movie, Theatre theater) {
         idCounter += 1;
-        this.id = idCounter;
+        this.showId = idCounter;
         this.showTime = showTime;
         this.movie = movie;
         this.theater = theater;
@@ -25,15 +25,8 @@ public class Show {
     public void setTheater(Theatre theater) {
         this.theater = theater;
     }
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
-    }
-    public int getAvailableSeats() {
-        return availableSeats;
-    }
-    public void updateShow(){
-    }
-    public synchronized Ticket bookTicket(RegisteredUser user, int seats){
+
+    public Ticket bookTicket(RegisteredUser user, int seats){
         if(availableSeats >= seats && seats >0){
             Ticket ticket = new Ticket();
             availableSeats -= seats;
@@ -53,9 +46,9 @@ public class Show {
     @Override
     public String toString() {
         return "Show{" +
-                "id=" + id +
+                "showId=" + showId +
                 ", showTime=" + showTime +
-                ", movie=" + movie.getName() +
+                ", movie=" + movie.getMovieName() +
                 ", theater=" + theater.getName() +
                 ", availableSeats=" + availableSeats +
                 '}';

@@ -8,9 +8,7 @@ public class Admin extends User {
         super(name);
     }
 
-    public void addMovie() {
-    //    Movie addNewMovie = new Movie("Avatar",Language.ENGLISH, Genre.ACTION);
-    }
+    public void addMovie() {}
 
     public void addShow(Theatre theatre){
         show.setTheater(theatre);

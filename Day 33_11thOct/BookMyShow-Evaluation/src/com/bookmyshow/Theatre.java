@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Theatre {
     private static int idCounter = 0;
-    private int id;
-    private String name;
-    private String location;
-    private int capacity;
+    private int theatreId;
+    private String theatreName;
+    private String theatreLocation;
+    private int theatreCapacity;
     private ArrayList<Show> shows;
 
-    public Theatre(String name, String location, int capacity) {
+    public Theatre(String theatreName, String theatreLocation, int theatreCapacity) {
         idCounter += 1;
-        this.id = idCounter;
-        this.name = name;
-        this.location = location;
-        this.capacity = capacity;
+        this.theatreId = idCounter;
+        this.theatreName = theatreName;
+        this.theatreLocation = theatreLocation;
+        this.theatreCapacity = theatreCapacity;
         this.shows = new ArrayList<>();
     }
 
@@ -28,11 +28,11 @@ public class Theatre {
     }
 
     public String getName() {
-        return name;
+        return theatreName;
     }
 
     public int getCapacity() {
-        return capacity;
+        return theatreCapacity;
     }
 
 }

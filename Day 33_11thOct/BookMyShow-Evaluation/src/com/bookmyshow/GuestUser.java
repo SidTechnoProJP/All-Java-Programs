@@ -5,8 +5,6 @@ public class GuestUser extends User {
         super(name);
     }
 
-    public void register(String username, String password) {
-
-    }
+    public void register(String username, String password) {}
 
 }
