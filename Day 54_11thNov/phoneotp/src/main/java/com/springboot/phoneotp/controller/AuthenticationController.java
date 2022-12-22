@@ -1,5 +1,6 @@
 package com.springboot.phoneotp.controller;
 
+import com.springboot.phoneotp.model.RegistrationModel;
 import com.springboot.phoneotp.model.SignInModel;
 import com.springboot.phoneotp.service.IauthenticationService;
 import com.springboot.phoneotp.model.PasswordResetRequestDto;
@@ -14,7 +15,14 @@ import java.util.Map;
 public class AuthenticationController {
     @Autowired
     IauthenticationService authenticationService;
-
+    @PostMapping("/register")
+    ResponseEntity<?> register(@RequestBody RegistrationModel registrationModel){
+        try {
+            return ResponseEntity.ok(authenticationService.register(registrationModel));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getLocalizedMessage());
+        }
+    }
     @PostMapping("/otp")
     ResponseEntity<?> otp(@RequestBody PasswordResetRequestDto passwordResetRequestDto){
         try {
@@ -23,6 +31,7 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body(e.getLocalizedMessage());
         }
     }
+
 
     @PostMapping("/signIn")
     ResponseEntity<?> sigIn(@RequestBody SignInModel signInModel){

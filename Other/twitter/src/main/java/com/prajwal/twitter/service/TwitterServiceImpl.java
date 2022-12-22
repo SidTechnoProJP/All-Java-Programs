@@ -23,7 +23,7 @@ import java.util.List;
 
 @Service
 public class TwitterServiceImpl implements TwitterService {
-
+ 
     String query;
 
     @Autowired
@@ -86,7 +86,6 @@ public class TwitterServiceImpl implements TwitterService {
 
         return null;
     }
-
 
     //get profile pic by id
     @Override

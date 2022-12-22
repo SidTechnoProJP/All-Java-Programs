@@ -1,0 +1,195 @@
+mysql> use foodapp_db;
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_foodapp_db |
++----------------------+
+| address              |
+| admin                |
+| bill                 |
+| category             |
+| current_user_session |
+| customer             |
+| food_cart            |
+| food_cart_item_list  |
+| hibernate_sequence   |
+| item                 |
+| item_restaurants     |
+| login                |
+| order_details        |
+| order_history        |
+| otp_customer         |
+| restaurant           |
++----------------------+
+16 rows in set (0.00 sec)
+
+mysql> desc address;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| address_id    | int          | NO   | PRI | NULL    |       |
+| area          | varchar(255) | YES  |     | NULL    |       |
+| building_name | varchar(255) | YES  |     | NULL    |       |
+| city          | varchar(255) | NO   |     | NULL    |       |
+| country       | varchar(255) | NO   |     | NULL    |       |
+| latitude      | double       | NO   |     | NULL    |       |
+| longitude     | double       | NO   |     | NULL    |       |
+| pincode       | varchar(255) | NO   |     | NULL    |       |
+| state         | varchar(255) | NO   |     | NULL    |       |
+| street_no     | varchar(255) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> desc admin;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| admin_id | int          | NO   | PRI | NULL    |       |
+| email    | varchar(255) | NO   |     | NULL    |       |
+| name     | varchar(255) | NO   |     | NULL    |       |
+| password | varchar(16)  | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc category;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| category_id   | int          | NO   | PRI | NULL    |       |
+| category_name | varchar(255) | NO   |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc currebt_user_session;
+ERROR 1146 (42S02): Table 'foodapp_db.currebt_user_session' doesn't exist
+mysql> desc current_user_session;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| curr_session_id | int          | NO   | PRI | NULL    |       |
+| email           | varchar(255) | NO   |     | NULL    |       |
+| login_date_time | datetime     | NO   |     | NULL    |       |
+| private_key     | varchar(255) | NO   |     | NULL    |       |
+| role            | varchar(255) | NO   |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc customer;
++--------------------+--------------+------+-----+---------+-------+
+| Field              | Type         | Null | Key | Default | Extra |
++--------------------+--------------+------+-----+---------+-------+
+| customer_id        | int          | NO   | PRI | NULL    |       |
+| age                | int          | NO   |     | NULL    |       |
+| email              | varchar(255) | NO   |     | NULL    |       |
+| first_name         | varchar(255) | NO   |     | NULL    |       |
+| gender             | varchar(255) | NO   |     | NULL    |       |
+| last_name          | varchar(255) | NO   |     | NULL    |       |
+| mobile_number      | varchar(10)  | NO   |     | NULL    |       |
+| password           | varchar(255) | NO   |     | NULL    |       |
+| two_fa_code        | varchar(255) | YES  |     | NULL    |       |
+| two_fa_expire_time | varchar(255) | YES  |     | NULL    |       |
+| cart_cart_id       | int          | YES  | MUL | NULL    |       |
++--------------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> desc food_cart;
++---------+------+------+-----+---------+-------+
+| Field   | Type | Null | Key | Default | Extra |
++---------+------+------+-----+---------+-------+
+| cart_id | int  | NO   | PRI | NULL    |       |
++---------+------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> desc food_cart_item_list;
++-------------------+------+------+-----+---------+-------+
+| Field             | Type | Null | Key | Default | Extra |
++-------------------+------+------+-----+---------+-------+
+| food_cart_cart_id | int  | NO   | MUL | NULL    |       |
+| item_list_item_id | int  | NO   | PRI | NULL    |       |
++-------------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc item;
++----------------------+--------------+------+-----+---------+-------+
+| Field                | Type         | Null | Key | Default | Extra |
++----------------------+--------------+------+-----+---------+-------+
+| item_id              | int          | NO   | PRI | NULL    |       |
+| cost                 | double       | NO   |     | NULL    |       |
+| item_name            | varchar(255) | NO   |     | NULL    |       |
+| quantity             | int          | YES  |     | NULL    |       |
+| file_name            | varchar(255) | YES  |     | NULL    |       |
+| category_category_id | int          | NO   | MUL | NULL    |       |
++----------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc item_restaurants;
++---------------------------+------+------+-----+---------+-------+
+| Field                     | Type | Null | Key | Default | Extra |
++---------------------------+------+------+-----+---------+-------+
+| item_list_item_id         | int  | NO   | MUL | NULL    |       |
+| restaurants_restaurant_id | int  | NO   | MUL | NULL    |       |
++---------------------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc login;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| user_id  | int          | NO   | PRI | NULL    |       |
+| email    | varchar(255) | NO   |     | NULL    |       |
+| password | varchar(16)  | NO   |     | NULL    |       |
+| role     | varchar(255) | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc order_details;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| order_id          | int          | NO   | PRI | NULL    |       |
+| order_date        | datetime     | YES  |     | NULL    |       |
+| order_status      | varchar(255) | YES  |     | NULL    |       |
+| food_cart_cart_id | int          | YES  | MUL | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc order_history;
++------------------+------+------+-----+---------+-------+
+| Field            | Type | Null | Key | Default | Extra |
++------------------+------+------+-----+---------+-------+
+| order_history_id | int  | NO   | PRI | NULL    |       |
+| customer_id      | int  | NO   |     | NULL    |       |
+| bill_bill_id     | int  | YES  | MUL | NULL    |       |
++------------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc otp_customer;
++--------------------+--------------+------+-----+---------+-------+
+| Field              | Type         | Null | Key | Default | Extra |
++--------------------+--------------+------+-----+---------+-------+
+| otp_no             | int          | NO   | PRI | NULL    |       |
+| is_2fa_enabled     | varchar(255) | YES  |     | NULL    |       |
+| two_fa_code        | varchar(255) | YES  |     | NULL    |       |
+| two_fa_expire_time | varchar(255) | YES  |     | NULL    |       |
+| twofa_default_type | varchar(255) | YES  |     | NULL    |       |
++--------------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc restaurant;
++-----------------------+--------------+------+-----+---------+-------+
+| Field                 | Type         | Null | Key | Default | Extra |
++-----------------------+--------------+------+-----+---------+-------+
+| restaurant_id         | int          | NO   | PRI | NULL    |       |
+| accept_credit_card    | bit(1)       | NO   |     | NULL    |       |
+| contact_nunber        | varchar(10)  | NO   |     | NULL    |       |
+| file_name             | varchar(255) | YES  |     | NULL    |       |
+| free_delivery         | bit(1)       | NO   |     | NULL    |       |
+| is_open               | bit(1)       | NO   |     | NULL    |       |
+| manager_name          | varchar(255) | YES  |     | NULL    |       |
+| ratings               | float        | NO   |     | NULL    |       |
+| restaurant_end_time   | time         | YES  |     | NULL    |       |
+| restaurant_name       | varchar(255) | NO   |     | NULL    |       |
+| restaurant_start_time | time         | YES  |     | NULL    |       |
+| address_address_id    | int          | YES  | MUL | NULL    |       |
++-----------------------+--------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)

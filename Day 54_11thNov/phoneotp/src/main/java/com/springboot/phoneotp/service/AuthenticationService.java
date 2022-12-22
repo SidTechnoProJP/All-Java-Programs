@@ -1,13 +1,14 @@
 package com.springboot.phoneotp.service;
 import com.springboot.phoneotp.model.RegistrationModel;
 import com.springboot.phoneotp.model.SignInModel;
+import com.twilio.Twilio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.phoneotp.TwilioConfig;
+import com.springboot.phoneotp.config.TwilioConfig;
 import com.springboot.phoneotp.model.OtpStatus;
 import com.springboot.phoneotp.model.PasswordResetRequestDto;
 import com.springboot.phoneotp.model.PasswordResetResponseDto;
@@ -37,7 +38,7 @@ public class AuthenticationService implements IauthenticationService {
         try {
             jdbcTemplate.update("insert into register values(?,?,?,?)",
                     registrationModel.getPhoneNumber(),registrationModel.getPassword(),registrationModel.getSecretQuestion().toLowerCase(),registrationModel.getSecretAnswer().toLowerCase());
-        return "registered";
+            return "registered";
         }
         catch (DuplicateKeyException e){
             throw new Exception("phoneNumber exist");
@@ -101,6 +102,7 @@ public class AuthenticationService implements IauthenticationService {
         try {
             PhoneNumber to = new PhoneNumber(passwordResetRequestDto.getPhoneNumber());
             PhoneNumber from = new PhoneNumber(twilioConfig.getTrialNumber());
+            Twilio.init(twilioConfig.getAccountSid(), twilioConfig.getAuthToken());
             String otp = generateOTP();
             String otpMessage = "Dear Customer , Your OTP is ##" + otp + "##. Use this Passcode to complete your transaction. Thank You.";
             Message message = Message

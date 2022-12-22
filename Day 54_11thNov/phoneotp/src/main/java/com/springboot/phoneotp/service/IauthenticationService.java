@@ -4,9 +4,9 @@ import com.springboot.phoneotp.model.PasswordResetRequestDto;
 import com.springboot.phoneotp.model.PasswordResetResponseDto;
 import com.springboot.phoneotp.model.RegistrationModel;
 import com.springboot.phoneotp.model.SignInModel;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
 public interface IauthenticationService {
     /**
      * register the user in the database
